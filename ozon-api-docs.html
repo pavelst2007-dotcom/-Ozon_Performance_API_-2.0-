@@ -97,7 +97,7 @@
     </div>
 
     <div class="tab-content">
-      <!-- LEFT COLUMN: Parameters -->
+      <!-- LEFT COLUMN: Parameters + Responses -->
       <div class="params-section">
         <div class="section-label">QUERY PARAMETERS</div>
 
@@ -132,9 +132,7 @@
           <div class="param-name">state</div>
           <div class="param-desc">
             <div class="param-type">string</div>
-            <p>
-              Default: <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code>
-            </p>
+            <p>Default: <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code></p>
             <p>
               Enum:
               <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code>
@@ -156,7 +154,91 @@
               <li><code class="inline-code green">CAMPAIGN_STATE_STOPPED</code> — кампания, приостановленная из-за нехватки бюджета;</li>
               <li><code class="inline-code green">CAMPAIGN_STATE_INACTIVE</code> — кампания, остановленная владельцем;</li>
               <li><code class="inline-code green">CAMPAIGN_STATE_ARCHIVED</code> — архивная кампания;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_DRAFT</code> — отредактированная кампания до отправки на модерацию;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_IN_PROGRESS</code> — кампания, отправленная на модерацию;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_FAILED</code> — кампания, непрошедшая модерацию;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_FINISHED</code> — кампания завершена, дата окончания в прошлом, такую кампанию нельзя изменить, можно только клонировать или создать новую.</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Parameter: page -->
+        <div class="param-row">
+          <div class="param-name">page</div>
+          <div class="param-desc">
+            <div class="param-type">integer &lt;int64&gt;</div>
+            <p>Номер страницы. Пагинация начинается с единицы.</p>
+          </div>
+        </div>
+
+        <!-- Parameter: pageSize -->
+        <div class="param-row">
+          <div class="param-name">pageSize</div>
+          <div class="param-desc">
+            <div class="param-type">integer &lt;int64&gt;</div>
+            <p>Размер страницы.</p>
+          </div>
+        </div>
+
+        <!-- RESPONSES SECTION -->
+        <div class="responses-section">
+          <h2 class="responses-title">Ответы</h2>
+
+          <!-- 200 accordion -->
+          <div class="response-accordion open">
+            <div class="response-accordion-header" onclick="toggleAccordion(this)">
+              <span class="resp-code-badge green">200</span>
+              <span class="resp-accordion-label">Список всех кампаний</span>
+              <span class="resp-accordion-arrow">∨</span>
+            </div>
+            <div class="response-accordion-body">
+              <div class="resp-schema-line">
+                <span class="resp-schema-label">RESPONSE SCHEMA:</span>
+                <span class="resp-schema-value">application/json</span>
+              </div>
+
+              <!-- list field -->
+              <div class="schema-row top-level">
+                <div class="schema-field-name">list
+                  <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span>
+                </div>
+                <div class="schema-field-desc">
+                  <span class="schema-type">Array of objects (extcampaignCampaignInList)</span><br />
+                  Список кампаний.
+                </div>
+              </div>
+
+              <!-- Array block -->
+              <div class="schema-array-block">
+                <div class="schema-array-label">Array () [</div>
+
+                <!-- id -->
+                <div class="schema-row">
+                  <div class="schema-field-name">id</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    <strong>Идентификатор кампании.</strong>
+                  </div>
+                </div>
+
+                <!-- paymentType -->
+                <div class="schema-row">
+                  <div class="schema-field-name">paymentType</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string (string)</span><br />
+                    Default: <code class="inline-code orange">"CAMPAIGN_TYPE_INVALID"</code><br />
+                    Тип оплаты:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">CPC</code> — за клики,</li>
+                      <li><code class="inline-code green">CPM</code> — за показы,</li>
+                      <li><code class="inline-code green">CPO</code> — за заказы.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="schema-array-close">]</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -174,6 +256,7 @@ Accept: application/json</pre>
         <div class="copy-link">
           <span class="copy-icon">⧉</span>
           <a href="#" class="link-blue">Копировать</a>
+          <span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span>
         </div>
 
         <h2 class="examples-title">Примеры ответа</h2>
@@ -194,14 +277,28 @@ Accept: application/json</pre>
             </select>
           </div>
           <div class="code-block response-code">
-            <pre>{
-  - "list": {
+            <pre id="response-json">{
+  "list": [
+    {
       "id": 48949,
       "paymentType": "CPM",
       "title": "Баннерная кампания",
       "state": "CAMPAIGN_STATE_RUNNING",
       "advObjectType": "BANNER",
-      "fromDate": "2019-10-07",</pre>
+      "fromDate": "2019-10-07",
+      "toDate": "2021-10-07",
+      "dailyBudget": 504000000,
+      "placement": [
+        "PLACEMENT_PDP"
+      ],
+      "budget": 50000000,
+      "createdAt": "2019-10-07T06:28:44.055042Z",
+      "updatedAt": "2020-10-01T06:28:44.055042Z",
+      "productAutopilotStrategy": "NO_AUTO_STRATEGY",
+      "productCampaignMode": "PRODUCT_CAMPAIGN_MODE_AUTO"
+    }
+  ]
+}</pre>
           </div>
         </div>
       </div>
