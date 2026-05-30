@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<!-- TOP NAVIGATION -->
 <header class="top-header">
   <div class="header-left">
     <span class="logo"><span class="logo-perf">Performance</span> <span class="logo-api">API</span></span>
@@ -20,15 +19,12 @@
   </div>
 </header>
 
-<!-- SECONDARY NAV -->
 <nav class="secondary-nav">
   <a href="#" class="nav-link">Общее описание</a>
   <a href="#" class="nav-link active">Методы Performance API</a>
 </nav>
 
 <div class="layout">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-search">
       <input type="text" placeholder="🔍" class="search-input" />
@@ -47,45 +43,24 @@
           <span class="method-badge get">GET</span>
           <a href="#list-campaigns">Список кампаний<br /><span class="endpoint">/api/client/campaign</span></a>
         </li>
-        <li>
-          <span class="method-badge get">GET</span>
-          <a href="#">Список продвигаемых объектов в кампании<br /><span class="endpoint">/api/client/campaign/{campaignId}/objects</span></a>
-        </li>
-        <li>
-          <span class="method-badge get">GET</span>
-          <a href="#">Лимиты ставок для инструментов продвижения<br /><span class="endpoint">/api/client/limits/list</span></a>
-        </li>
-        <li>
-          <span class="method-badge post">POST</span>
-          <a href="#">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a>
-        </li>
-        <li>
-          <span class="method-badge get">GET</span>
-          <a href="#">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a>
-        </li>
+        <li><span class="method-badge get">GET</span><a href="#">Список продвигаемых объектов в кампании<br /><span class="endpoint">/api/client/campaign/{campaignId}/objects</span></a></li>
+        <li><span class="method-badge get">GET</span><a href="#">Лимиты ставок для инструментов продвижения<br /><span class="endpoint">/api/client/limits/list</span></a></li>
+        <li><span class="method-badge post">POST</span><a href="#">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a></li>
+        <li><span class="method-badge get">GET</span><a href="#">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a></li>
       </ul>
     </div>
-    <div class="sidebar-group">
-      <div class="sidebar-group-title collapsible">Статистика <span class="arrow">›</span></div>
-    </div>
-    <div class="sidebar-group">
-      <div class="sidebar-group-title collapsible">Оплата за клик <span class="arrow">›</span></div>
-    </div>
-    <div class="sidebar-group">
-      <div class="sidebar-group-title collapsible">Товары в Оплате за клик <span class="arrow">›</span></div>
-    </div>
+    <div class="sidebar-group"><div class="sidebar-group-title collapsible">Статистика <span class="arrow">›</span></div></div>
+    <div class="sidebar-group"><div class="sidebar-group-title collapsible">Оплата за клик <span class="arrow">›</span></div></div>
+    <div class="sidebar-group"><div class="sidebar-group-title collapsible">Товары в Оплате за клик <span class="arrow">›</span></div></div>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main class="main-content" id="list-campaigns">
     <h1 class="page-title">Список кампаний</h1>
-
     <div class="method-line">
       <span class="method-badge get large">GET</span>
       <code class="endpoint-url">/api/client/campaign</code>
       <button class="btn-copy" title="Копировать">⧉</button>
     </div>
-
     <div class="tabs">
       <button class="tab active">Описание и примеры</button>
       <button class="tab">Консоль</button>
@@ -168,10 +143,8 @@
           </div>
         </div>
 
-        <!-- RESPONSES SECTION -->
         <div class="responses-section">
           <h2 class="responses-title">Ответы</h2>
-
           <div class="response-accordion open">
             <div class="response-accordion-header" onclick="toggleAccordion(this)">
               <span class="resp-code-badge green">200</span>
@@ -187,24 +160,18 @@
               <div class="schema-row top-level">
                 <div class="schema-field-name">list <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
                 <div class="schema-field-desc">
-                  <span class="schema-type">Array of objects (extcampaignCampaignInList)</span><br />
-                  Список кампаний.
+                  <span class="schema-type">Array of objects (extcampaignCampaignInList)</span><br />Список кампаний.
                 </div>
               </div>
 
               <div class="schema-array-block">
                 <div class="schema-array-label">Array () [</div>
 
-                <!-- id -->
                 <div class="schema-row">
                   <div class="schema-field-name">id</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string &lt;uint64&gt;</span><br />
-                    Идентификатор кампании.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор кампании.</div>
                 </div>
 
-                <!-- paymentType -->
                 <div class="schema-row">
                   <div class="schema-field-name">paymentType</div>
                   <div class="schema-field-desc">
@@ -219,16 +186,11 @@
                   </div>
                 </div>
 
-                <!-- title -->
                 <div class="schema-row">
                   <div class="schema-field-name">title</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string</span><br />
-                    Название кампании.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Название кампании.</div>
                 </div>
 
-                <!-- state -->
                 <div class="schema-row">
                   <div class="schema-field-name">state</div>
                   <div class="schema-field-desc">
@@ -249,7 +211,6 @@
                   </div>
                 </div>
 
-                <!-- advObjectType -->
                 <div class="schema-row">
                   <div class="schema-field-name">advObjectType</div>
                   <div class="schema-field-desc">
@@ -264,35 +225,22 @@
                   </div>
                 </div>
 
-                <!-- fromDate -->
                 <div class="schema-row">
                   <div class="schema-field-name">fromDate</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string</span><br />
-                    Дата старта рекламной кампании.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Дата старта рекламной кампании.</div>
                 </div>
 
-                <!-- toDate -->
                 <div class="schema-row">
                   <div class="schema-field-name">toDate</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string</span><br />
-                    Дата завершения рекламной кампании.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Дата завершения рекламной кампании.</div>
                 </div>
 
-                <!-- autostopStatus -->
                 <div class="schema-row">
                   <div class="schema-field-name">autostopStatus</div>
                   <div class="schema-field-desc">
                     <span class="schema-type">string (advcamptypeAutostopStatus)</span><br />
                     Default: <code class="inline-code orange">"AUTOSTOP_STATUS_NONE"</code><br />
-                    Enum:
-                    <code class="inline-code orange">"AUTOSTOP_STATUS_NONE"</code>
-                    <code class="inline-code orange">"AUTOSTOP_STATUS_ENABLED"</code>
-                    <code class="inline-code orange">"AUTOSTOP_STATUS_DISABLED"</code>
-                    <code class="inline-code orange">"AUTOSTOP_STATUS_STOPPED"</code><br />
+                    Enum: <code class="inline-code orange">"AUTOSTOP_STATUS_NONE"</code> <code class="inline-code orange">"AUTOSTOP_STATUS_ENABLED"</code> <code class="inline-code orange">"AUTOSTOP_STATUS_DISABLED"</code> <code class="inline-code orange">"AUTOSTOP_STATUS_STOPPED"</code><br />
                     Статус кампании:
                     <ul class="param-list" style="margin-top:6px">
                       <li><code class="inline-code green">AUTOSTOP_STATUS_NONE</code> — продавец создал кампанию вручную.</li>
@@ -303,16 +251,11 @@
                   </div>
                 </div>
 
-                <!-- isAutocreated -->
                 <div class="schema-row">
                   <div class="schema-field-name">isAutocreated</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">boolean</span><br />
-                    <code class="inline-code green">true</code>, если кампания создана автоматически.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">boolean</span><br /><code class="inline-code green">true</code>, если кампания создана автоматически.</div>
                 </div>
 
-                <!-- budget -->
                 <div class="schema-row">
                   <div class="schema-field-name">budget</div>
                   <div class="schema-field-desc">
@@ -321,12 +264,51 @@
                   </div>
                 </div>
 
-                <!-- dailyBudget -->
                 <div class="schema-row">
                   <div class="schema-field-name">dailyBudget</div>
                   <div class="schema-field-desc">
                     <span class="schema-type">string &lt;uint64&gt;</span><br />
-                    Дневной бюджет рекламной кампании.
+                    Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">weeklyBudget</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    Недельный бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">placement</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string (extcampaignProductCampaignInListPlacement)</span><br />
+                    Default: <code class="inline-code orange">"PLACEMENT_INVALID"</code><br />
+                    Enum: <code class="inline-code orange">"PLACEMENT_INVALID"</code> <code class="inline-code orange">"PLACEMENT_PDP"</code> <code class="inline-code orange">"PLACEMENT_SEARCH_AND_CATEGORY"</code> <code class="inline-code orange">"PLACEMENT_TOP_PROMOTION"</code> <code class="inline-code orange">"PLACEMENT_OVERTOP"</code> <code class="inline-code orange">"PLACEMENT_TAKEOVER"</code><br />
+                    Место размещения продвигаемых товаров:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">PLACEMENT_INVALID</code> — не определено.</li>
+                      <li><code class="inline-code green">PLACEMENT_PDP</code> — карточка товара. Доступно только для кампаний с ручным управлением.</li>
+                      <li><code class="inline-code green">PLACEMENT_SEARCH_AND_CATEGORY</code> — поиск и рекомендации.</li>
+                      <li><code class="inline-code green">PLACEMENT_TOP_PROMOTION</code> — поиск.</li>
+                      <li><code class="inline-code green">PLACEMENT_OVERTOP</code> — поиск и главная (Спецразмещение).</li>
+                      <li><code class="inline-code green">PLACEMENT_TAKEOVER</code> — одновременный показ товаров на первых 4 плитках.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">productAutopilotStrategy</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Default: <code class="inline-code orange">"NO_AUTO_STRATEGY"</code><br />
+                    Enum: <code class="inline-code orange">"MAX_VIEWS"</code> <code class="inline-code orange">"MAX_CLICKS"</code> <code class="inline-code orange">"TOP_MAX_CLICKS"</code> <code class="inline-code orange">"NO_AUTO_STRATEGY"</code> <code class="inline-code orange">"TAKEOVER"</code> <code class="inline-code orange">"TOP_PROMOTION"</code><br />
+                    Стратегия, которая используется для кампании:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">MAX_VIEWS</code> — максимальное количество показов;</li>
+                      <li><code class="inline-code green">MAX_CLICKS</code> — автостратегия для Поиска и рекомендаций;</li>
+                    </ul>
                   </div>
                 </div>
 
@@ -337,7 +319,6 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: Examples -->
       <div class="examples-section">
         <h2 class="examples-title">Примеры запроса</h2>
         <div class="code-block request-block">
@@ -352,23 +333,16 @@ Accept: application/json</pre>
           <a href="#" class="link-blue">Копировать</a>
           <span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span>
         </div>
-
         <h2 class="examples-title">Примеры ответа</h2>
         <div class="response-tabs">
           <button class="resp-tab active green">200</button>
           <button class="resp-tab red">default</button>
         </div>
-
         <div class="response-block">
-          <div class="resp-meta">
-            <span class="resp-label">Content type</span>
-            <div class="resp-value">application/json</div>
-          </div>
+          <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
           <div class="resp-meta">
             <span class="resp-label">Example</span>
-            <select class="resp-example-select">
-              <option>Баннерная кампания</option>
-            </select>
+            <select class="resp-example-select"><option>Баннерная кампания</option></select>
           </div>
           <div class="code-block response-code">
             <pre id="response-json">{
