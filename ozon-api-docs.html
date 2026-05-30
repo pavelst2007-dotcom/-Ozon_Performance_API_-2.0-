@@ -101,7 +101,7 @@
       <div class="params-section">
         <div class="section-label">QUERY PARAMETERS</div>
 
-        <!-- Parameter: campaignIds -->
+        <!-- campaignIds -->
         <div class="param-row">
           <div class="param-name">campaignIds</div>
           <div class="param-desc">
@@ -111,7 +111,7 @@
           </div>
         </div>
 
-        <!-- Parameter: advObjectType -->
+        <!-- advObjectType -->
         <div class="param-row">
           <div class="param-name">advObjectType</div>
           <div class="param-desc">
@@ -127,7 +127,7 @@
           </div>
         </div>
 
-        <!-- Parameter: state -->
+        <!-- state (query param) -->
         <div class="param-row">
           <div class="param-name">state</div>
           <div class="param-desc">
@@ -162,7 +162,7 @@
           </div>
         </div>
 
-        <!-- Parameter: page -->
+        <!-- page -->
         <div class="param-row">
           <div class="param-name">page</div>
           <div class="param-desc">
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <!-- Parameter: pageSize -->
+        <!-- pageSize -->
         <div class="param-row">
           <div class="param-name">pageSize</div>
           <div class="param-desc">
@@ -184,7 +184,6 @@
         <div class="responses-section">
           <h2 class="responses-title">Ответы</h2>
 
-          <!-- 200 accordion -->
           <div class="response-accordion open">
             <div class="response-accordion-header" onclick="toggleAccordion(this)">
               <span class="resp-code-badge green">200</span>
@@ -197,27 +196,24 @@
                 <span class="resp-schema-value">application/json</span>
               </div>
 
-              <!-- list field -->
+              <!-- list -->
               <div class="schema-row top-level">
-                <div class="schema-field-name">list
-                  <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span>
-                </div>
+                <div class="schema-field-name">list <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
                 <div class="schema-field-desc">
                   <span class="schema-type">Array of objects (extcampaignCampaignInList)</span><br />
                   Список кампаний.
                 </div>
               </div>
 
-              <!-- Array block -->
               <div class="schema-array-block">
-                <div class="schema-array-label">Array () [</div>
+                <div class="schema-array-label">Array () [</div>
 
                 <!-- id -->
                 <div class="schema-row">
                   <div class="schema-field-name">id</div>
                   <div class="schema-field-desc">
                     <span class="schema-type">string &lt;uint64&gt;</span><br />
-                    <strong>Идентификатор кампании.</strong>
+                    Идентификатор кампании.
                   </div>
                 </div>
 
@@ -232,6 +228,51 @@
                       <li><code class="inline-code green">CPC</code> — за клики,</li>
                       <li><code class="inline-code green">CPM</code> — за показы,</li>
                       <li><code class="inline-code green">CPO</code> — за заказы.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- title -->
+                <div class="schema-row">
+                  <div class="schema-field-name">title</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Название кампании.
+                  </div>
+                </div>
+
+                <!-- state (response schema) -->
+                <div class="schema-row">
+                  <div class="schema-field-name">state</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string (string)</span><br />
+                    Default: <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code><br />
+                    Состояние кампании:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">CAMPAIGN_STATE_RUNNING</code> — активная кампания;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_PLANNED</code> — кампания, сроки проведения которой ещё не наступили;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_STOPPED</code> — кампания, приостановленная из-за нехватки бюджета;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_INACTIVE</code> — кампания, остановленная владельцем;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_ARCHIVED</code> — архивная кампания;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_DRAFT</code> — отредактированная кампания до отправки на модерацию;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_IN_PROGRESS</code> — кампания, отправленная на модерацию;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_FAILED</code> — кампания, непрошедшая модерацию;</li>
+                      <li><code class="inline-code green">CAMPAIGN_STATE_FINISHED</code> — кампания завершена, дата окончания в прошлом, такую кампанию нельзя изменить, можно только клонировать или создать новую.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- advObjectType (response schema) -->
+                <div class="schema-row">
+                  <div class="schema-field-name">advObjectType</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Тип рекламируемой кампании:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">SKU</code> — Оплата за клик;</li>
+                      <li><code class="inline-code green">BANNER</code> — Баннерная рекламная кампания;</li>
+                      <li><code class="inline-code green">SEARCH_PROMO</code> — Оплата за заказ;</li>
+                      <li><code class="inline-code green">VIDEO_BANNER</code> — Видеобаннер.</li>
                     </ul>
                   </div>
                 </div>
