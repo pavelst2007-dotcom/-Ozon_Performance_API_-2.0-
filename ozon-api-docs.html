@@ -34,15 +34,12 @@
       <input type="text" placeholder="🔍" class="search-input" />
     </div>
     <p class="sidebar-empty">Ничего не найдено</p>
-
     <div class="sidebar-section">
       <div class="sidebar-section-title collapsible">Обновления <span class="arrow">›</span></div>
     </div>
-
     <div class="sidebar-section">
       <div class="sidebar-section-title">МЕТОДЫ PERFORMANCE API</div>
     </div>
-
     <div class="sidebar-group">
       <div class="sidebar-group-title collapsible">Кампании и рекламируемые объекты <span class="arrow">›</span></div>
       <ul class="sidebar-menu">
@@ -68,7 +65,6 @@
         </li>
       </ul>
     </div>
-
     <div class="sidebar-group">
       <div class="sidebar-group-title collapsible">Статистика <span class="arrow">›</span></div>
     </div>
@@ -90,18 +86,15 @@
       <button class="btn-copy" title="Копировать">⧉</button>
     </div>
 
-    <!-- TABS -->
     <div class="tabs">
       <button class="tab active">Описание и примеры</button>
       <button class="tab">Консоль</button>
     </div>
 
     <div class="tab-content">
-      <!-- LEFT COLUMN: Parameters + Responses -->
       <div class="params-section">
         <div class="section-label">QUERY PARAMETERS</div>
 
-        <!-- campaignIds -->
         <div class="param-row">
           <div class="param-name">campaignIds</div>
           <div class="param-desc">
@@ -111,7 +104,6 @@
           </div>
         </div>
 
-        <!-- advObjectType -->
         <div class="param-row">
           <div class="param-name">advObjectType</div>
           <div class="param-desc">
@@ -127,14 +119,12 @@
           </div>
         </div>
 
-        <!-- state (query param) -->
         <div class="param-row">
           <div class="param-name">state</div>
           <div class="param-desc">
             <div class="param-type">string</div>
             <p>Default: <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code></p>
-            <p>
-              Enum:
+            <p>Enum:
               <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code>
               <code class="inline-code orange">"CAMPAIGN_STATE_RUNNING"</code>
               <code class="inline-code orange">"CAMPAIGN_STATE_PLANNED"</code>
@@ -162,7 +152,6 @@
           </div>
         </div>
 
-        <!-- page -->
         <div class="param-row">
           <div class="param-name">page</div>
           <div class="param-desc">
@@ -171,7 +160,6 @@
           </div>
         </div>
 
-        <!-- pageSize -->
         <div class="param-row">
           <div class="param-name">pageSize</div>
           <div class="param-desc">
@@ -196,7 +184,6 @@
                 <span class="resp-schema-value">application/json</span>
               </div>
 
-              <!-- list -->
               <div class="schema-row top-level">
                 <div class="schema-field-name">list <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
                 <div class="schema-field-desc">
@@ -241,7 +228,7 @@
                   </div>
                 </div>
 
-                <!-- state (response schema) -->
+                <!-- state -->
                 <div class="schema-row">
                   <div class="schema-field-name">state</div>
                   <div class="schema-field-desc">
@@ -262,7 +249,7 @@
                   </div>
                 </div>
 
-                <!-- advObjectType (response schema) -->
+                <!-- advObjectType -->
                 <div class="schema-row">
                   <div class="schema-field-name">advObjectType</div>
                   <div class="schema-field-desc">
@@ -274,6 +261,72 @@
                       <li><code class="inline-code green">SEARCH_PROMO</code> — Оплата за заказ;</li>
                       <li><code class="inline-code green">VIDEO_BANNER</code> — Видеобаннер.</li>
                     </ul>
+                  </div>
+                </div>
+
+                <!-- fromDate -->
+                <div class="schema-row">
+                  <div class="schema-field-name">fromDate</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Дата старта рекламной кампании.
+                  </div>
+                </div>
+
+                <!-- toDate -->
+                <div class="schema-row">
+                  <div class="schema-field-name">toDate</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Дата завершения рекламной кампании.
+                  </div>
+                </div>
+
+                <!-- autostopStatus -->
+                <div class="schema-row">
+                  <div class="schema-field-name">autostopStatus</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string (advcamptypeAutostopStatus)</span><br />
+                    Default: <code class="inline-code orange">"AUTOSTOP_STATUS_NONE"</code><br />
+                    Enum:
+                    <code class="inline-code orange">"AUTOSTOP_STATUS_NONE"</code>
+                    <code class="inline-code orange">"AUTOSTOP_STATUS_ENABLED"</code>
+                    <code class="inline-code orange">"AUTOSTOP_STATUS_DISABLED"</code>
+                    <code class="inline-code orange">"AUTOSTOP_STATUS_STOPPED"</code><br />
+                    Статус кампании:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">AUTOSTOP_STATUS_NONE</code> — продавец создал кампанию вручную.</li>
+                      <li><code class="inline-code green">AUTOSTOP_STATUS_ENABLED</code> — кампания создана автоматически и остановится, когда кончатся баллы.</li>
+                      <li><code class="inline-code green">AUTOSTOP_STATUS_DISABLED</code> — кампания создана автоматически, но она не остановится, когда кончатся баллы.</li>
+                      <li><code class="inline-code green">AUTOSTOP_STATUS_STOPPED</code> — баллы закончились, кампания остановлена автоматически.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- isAutocreated -->
+                <div class="schema-row">
+                  <div class="schema-field-name">isAutocreated</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">boolean</span><br />
+                    <code class="inline-code green">true</code>, если кампания создана автоматически.
+                  </div>
+                </div>
+
+                <!-- budget -->
+                <div class="schema-row">
+                  <div class="schema-field-name">budget</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.
+                  </div>
+                </div>
+
+                <!-- dailyBudget -->
+                <div class="schema-row">
+                  <div class="schema-field-name">dailyBudget</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    Дневной бюджет рекламной кампании.
                   </div>
                 </div>
 
