@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance API — Документация</title>
+  <link rel="stylesheet" href="ozon-api-docs.css" />
+</head>
+<body>
+
+<!-- TOP NAVIGATION -->
+<header class="top-header">
+  <div class="header-left">
+    <span class="logo"><span class="logo-perf">Performance</span> <span class="logo-api">API</span></span>
+  </div>
+  <div class="header-right">
+    <button class="btn-client-key">Ввести Client ID и API Key</button>
+    <span class="header-icon">🔒</span>
+    <span class="header-icon">🌐</span>
+  </div>
+</header>
+
+<!-- SECONDARY NAV -->
+<nav class="secondary-nav">
+  <a href="#" class="nav-link">Общее описание</a>
+  <a href="#" class="nav-link active">Методы Performance API</a>
+</nav>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-search">
+      <input type="text" placeholder="🔍" class="search-input" />
+    </div>
+    <p class="sidebar-empty">Ничего не найдено</p>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title collapsible">Обновления <span class="arrow">›</span></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">МЕТОДЫ PERFORMANCE API</div>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title collapsible">Кампании и рекламируемые объекты <span class="arrow">›</span></div>
+      <ul class="sidebar-menu">
+        <li class="active">
+          <span class="method-badge get">GET</span>
+          <a href="#list-campaigns">Список кампаний<br /><span class="endpoint">/api/client/campaign</span></a>
+        </li>
+        <li>
+          <span class="method-badge get">GET</span>
+          <a href="#">Список продвигаемых объектов в кампании<br /><span class="endpoint">/api/client/campaign/{campaignId}/objects</span></a>
+        </li>
+        <li>
+          <span class="method-badge get">GET</span>
+          <a href="#">Лимиты ставок для инструментов продвижения<br /><span class="endpoint">/api/client/limits/list</span></a>
+        </li>
+        <li>
+          <span class="method-badge post">POST</span>
+          <a href="#">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a>
+        </li>
+        <li>
+          <span class="method-badge get">GET</span>
+          <a href="#">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-group">
+      <div class="sidebar-group-title collapsible">Статистика <span class="arrow">›</span></div>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-title collapsible">Оплата за клик <span class="arrow">›</span></div>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-title collapsible">Товары в Оплате за клик <span class="arrow">›</span></div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="list-campaigns">
+    <h1 class="page-title">Список кампаний</h1>
+
+    <div class="method-line">
+      <span class="method-badge get large">GET</span>
+      <code class="endpoint-url">/api/client/campaign</code>
+      <button class="btn-copy" title="Копировать">⧉</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab active">Описание и примеры</button>
+      <button class="tab">Консоль</button>
+    </div>
+
+    <div class="tab-content">
+      <!-- LEFT COLUMN: Parameters -->
+      <div class="params-section">
+        <div class="section-label">QUERY PARAMETERS</div>
+
+        <!-- Parameter: campaignIds -->
+        <div class="param-row">
+          <div class="param-name">campaignIds</div>
+          <div class="param-desc">
+            <div class="param-type">Array of strings &lt;uint64&gt;</div>
+            <p>Список идентификаторов кампаний, для которых необходимо вывести информацию.</p>
+            <p>Если передать значение, то в ответе будет информация по кампаниям, которые указаны в поле <code class="inline-code campaigns">campaigns</code>. Если поле пустое, информация будет отдана по всем кампаниям.</p>
+          </div>
+        </div>
+
+        <!-- Parameter: advObjectType -->
+        <div class="param-row">
+          <div class="param-name">advObjectType</div>
+          <div class="param-desc">
+            <div class="param-type">string</div>
+            <p>Тип рекламируемой кампании:</p>
+            <ul class="param-list">
+              <li><code class="inline-code">SKU</code> — Оплата за клик;</li>
+              <li><code class="inline-code">BANNER</code> — Баннерная рекламная кампания;</li>
+              <li><code class="inline-code">SEARCH_PROMO</code> — Оплата за заказ;</li>
+              <li><code class="inline-code">VIDEO_BANNER</code> — Видеобаннер.</li>
+            </ul>
+            <a href="#" class="link-blue">Подробнее о типах рекламных кампаний</a>
+          </div>
+        </div>
+
+        <!-- Parameter: state -->
+        <div class="param-row">
+          <div class="param-name">state</div>
+          <div class="param-desc">
+            <div class="param-type">string</div>
+            <p>
+              Default: <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code>
+            </p>
+            <p>
+              Enum:
+              <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_RUNNING"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_PLANNED"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_STOPPED"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_INACTIVE"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_ARCHIVED"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_MODERATION_DRAFT"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_MODERATION_IN_PROGRESS"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_MODERATION_FAILED"</code>
+              <code class="inline-code orange">"CAMPAIGN_STATE_FINISHED"</code>
+            </p>
+            <p>Состояние кампании.</p>
+            <p>Возможные значения:</p>
+            <ul class="param-list">
+              <li><code class="inline-code green">CAMPAIGN_STATE_RUNNING</code> — активная кампания;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_PLANNED</code> — кампания, сроки проведения которой ещё не наступили;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_STOPPED</code> — кампания, приостановленная из-за нехватки бюджета;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_INACTIVE</code> — кампания, остановленная владельцем;</li>
+              <li><code class="inline-code green">CAMPAIGN_STATE_ARCHIVED</code> — архивная кампания;</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Examples -->
+      <div class="examples-section">
+        <h2 class="examples-title">Примеры запроса</h2>
+        <div class="code-block request-block">
+          <pre><span class="http-method">GET</span> /api/client/campaign?campaignIds=52374&amp;advObjectType=SKU&amp;state=CAMP
+Authorization: Bearer eyJhbGci0iJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
+Host: api-performance.ozon.ru:443
+Content-Type: application/json
+Accept: application/json</pre>
+        </div>
+        <div class="copy-link">
+          <span class="copy-icon">⧉</span>
+          <a href="#" class="link-blue">Копировать</a>
+        </div>
+
+        <h2 class="examples-title">Примеры ответа</h2>
+        <div class="response-tabs">
+          <button class="resp-tab active green">200</button>
+          <button class="resp-tab red">default</button>
+        </div>
+
+        <div class="response-block">
+          <div class="resp-meta">
+            <span class="resp-label">Content type</span>
+            <div class="resp-value">application/json</div>
+          </div>
+          <div class="resp-meta">
+            <span class="resp-label">Example</span>
+            <select class="resp-example-select">
+              <option>Баннерная кампания</option>
+            </select>
+          </div>
+          <div class="code-block response-code">
+            <pre>{
+  - "list": {
+      "id": 48949,
+      "paymentType": "CPM",
+      "title": "Баннерная кампания",
+      "state": "CAMPAIGN_STATE_RUNNING",
+      "advObjectType": "BANNER",
+      "fromDate": "2019-10-07",</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="ozon-api-docs.js"></script>
+</body>
+</html>
