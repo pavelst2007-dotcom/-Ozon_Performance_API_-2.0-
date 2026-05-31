@@ -41,8 +41,8 @@
       <ul class="sidebar-menu">
         <li><span class="method-badge get">GET</span><a href="#list-campaigns">Список кампаний<br /><span class="endpoint">/api/client/campaign</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#list-objects">Список продвигаемых объектов в кампании<br /><span class="endpoint">/api/client/campaign/{campaignId}/objects</span></a></li>
-        <li class="active"><span class="method-badge get">GET</span><a href="#list-limits">Лимиты ставок для инструментов продвижения<br /><span class="endpoint">/api/client/limits/list</span></a></li>
-        <li><span class="method-badge post">POST</span><a href="#">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a></li>
+        <li><span class="method-badge get">GET</span><a href="#list-limits">Лимиты ставок для инструментов продвижения<br /><span class="endpoint">/api/client/limits/list</span></a></li>
+        <li class="active"><span class="method-badge post">POST</span><a href="#min-sku">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a></li>
       </ul>
     </div>
@@ -282,14 +282,52 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
 
                   <div class="schema-row">
                     <div class="schema-field-name">paymentMethod</div>
-                    <div class="schema-field-desc"><span class="schema-type">string</span></div>
+                    <div class="schema-field-desc">
+                      <span class="schema-type">string</span><br />
+                      Enum: <code class="inline-code orange">"CPO"</code> <code class="inline-code orange">"CPC"</code> <code class="inline-code orange">"CPM"</code><br />
+                      Способ оплаты:
+                      <ul class="param-list" style="margin-top:6px">
+                        <li><code class="inline-code green">CPO</code> — оплата за заказ,</li>
+                        <li><code class="inline-code green">CPC</code> — оплата за клик,</li>
+                        <li><code class="inline-code green">CPM</code> — оплата за 1000 показов.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="schema-row">
+                    <div class="schema-field-name">placement</div>
+                    <div class="schema-field-desc">
+                      <span class="schema-type">string</span><br />
+                      Enum: <code class="inline-code orange">"CAMPAIGN_PLACEMENT_SEARCH_AND_CATEGORY"</code> <code class="inline-code orange">"CAMPAIGN_PLACEMENT_TOP_PROMOTION"</code> <code class="inline-code orange">"CAMPAIGN_PLACEMENT_OVERTOP"</code><br />
+                      Тип кампании:
+                      <ul class="param-list" style="margin-top:6px">
+                        <li><code class="inline-code green">CAMPAIGN_PLACEMENT_SEARCH_AND_CATEGORY</code> — Поиск и рекомендации;</li>
+                        <li><code class="inline-code green">CAMPAIGN_PLACEMENT_TOP_PROMOTION</code> — Поиск;</li>
+                        <li><code class="inline-code green">CAMPAIGN_PLACEMENT_OVERTOP</code> — Спецразмещение.</li>
+                      </ul>
+                    </div>
                   </div>
 
                   <div class="schema-array-close">]</div>
                 </div>
               </div>
             </div>
-            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+
+            <!-- default error - expanded with schema -->
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">∨</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">error</div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -317,6 +355,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 4: MIN SKU ===== -->
+    <section id="min-sku" class="method-section">
+      <h1 class="page-title">Минимальная ставка для товаров по SKU</h1>
+      <div class="method-line">
+        <span class="method-badge post large">POST</span>
+        <code class="endpoint-url">/api/client/min/sku</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <!-- content will be added on next screenshot -->
         </div>
       </div>
     </section>
