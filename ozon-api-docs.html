@@ -43,7 +43,7 @@
         <li><span class="method-badge get">GET</span><a href="#list-objects">Список продвигаемых объектов в кампании<br /><span class="endpoint">/api/client/campaign/{campaignId}/objects</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#list-limits">Лимиты ставок для инструментов продвижения<br /><span class="endpoint">/api/client/limits/list</span></a></li>
         <li><span class="method-badge post">POST</span><a href="#min-sku">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a></li>
-        <li><span class="method-badge get">GET</span><a href="#products-with-bonuses">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a></li>
+        <li class="active"><span class="method-badge get">GET</span><a href="#products-with-bonuses">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a></li>
       </ul>
     </div>
     <div class="sidebar-group"><div class="sidebar-group-title collapsible">Статистика <span class="arrow">›</span></div></div>
@@ -306,9 +306,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
       <div class="tab-content">
         <div class="params-section">
           <p class="method-description">Используйте метод, чтобы узнать минимальную ставку для одного или нескольких товаров по SKU.</p>
-
           <div class="section-label">REQUEST BODY SCHEMA: application/json</div>
-
           <div class="param-row">
             <div class="param-name">marketplaceId</div>
             <div class="param-desc">
@@ -322,7 +320,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               </ul>
             </div>
           </div>
-
           <div class="param-row">
             <div class="param-name">paymentType</div>
             <div class="param-desc">
@@ -336,7 +333,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               </ul>
             </div>
           </div>
-
           <div class="param-row">
             <div class="param-name">sku</div>
             <div class="param-desc">
@@ -344,7 +340,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               Идентификатор товара: Ozon ID или SKU.
             </div>
           </div>
-
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
             <div class="response-accordion open">
@@ -361,29 +356,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                 </div>
                 <div class="schema-array-block">
                   <div class="schema-array-label">Array () [</div>
-                  <div class="schema-row">
-                    <div class="schema-field-name">bid</div>
-                    <div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Размер ставки.</div>
-                  </div>
-                  <div class="schema-row">
-                    <div class="schema-field-name">sku</div>
-                    <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор товара: Ozon ID или SKU.</div>
-                  </div>
+                  <div class="schema-row"><div class="schema-field-name">bid</div><div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Размер ставки.</div></div>
+                  <div class="schema-row"><div class="schema-field-name">sku</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор товара: Ozon ID или SKU.</div></div>
                   <div class="schema-array-close">]</div>
                 </div>
               </div>
             </div>
             <div class="response-accordion">
-              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
-                <span class="resp-accordion-arrow">›</span>
-                <span class="resp-code-badge gray">default</span>
-                <span class="resp-accordion-label">Ошибка</span>
-              </div>
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка</span></div>
               <div class="response-accordion-body" style="display:none;"></div>
             </div>
           </div>
         </div>
-
         <div class="examples-section">
           <h2 class="examples-title">Примеры запроса</h2>
           <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
@@ -395,7 +379,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
   ]
 }</pre></div>
           <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
-
           <h2 class="examples-title">Примеры ответа</h2>
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
           <div class="response-block">
@@ -425,9 +408,63 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
       <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
       <div class="tab-content">
         <div class="params-section">
-          <!-- content will be added on next screenshot -->
+          <p class="method-description">Возвращает список SKU товаров, на которые начислены бонусы.</p>
+          <p class="method-description">За клик на товар в первую очередь тратятся начисленные на него бонусы. Если бонусы кончились, тратится общий бюджет кампании.</p>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">Список товаров с бонусами</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">skus</div>
+                  <div class="schema-field-desc"><span class="schema-type">Array of strings &lt;uint64&gt;</span><br />Список SKU товаров.</div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">›</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка</span>
+              </div>
+              <div class="response-accordion-body" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-5">{
+  "skus": [
+    "string"
+  ]
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- ===== SECTION: STATISTIKA ===== -->
+    <section id="statistika" class="method-section">
+      <h1 class="page-title">Статистика</h1>
+
+      <div class="info-banner">Даты в отчётах рекламного кабинета группируются по московскому времени.</div>
+
+      <p class="method-description">Для получения отчёта кампании:</p>
+      <ol class="param-list ordered">
+        <li>Отправьте запрос на генерацию отчёта.</li>
+        <li>Получите сгенерированный отчёт по UUID запроса.</li>
+      </ol>
     </section>
 
   </main>
