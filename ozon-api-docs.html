@@ -495,6 +495,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте в адрес метода <code class="inline-code pink">/json</code> и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/json</code>.</p>
 
           <div class="section-label">REQUEST BODY SCHEMA: application/json</div>
+
+          <!-- campaigns -->
           <div class="param-row">
             <div class="param-name">campaigns<br /><span class="required-badge">required</span></div>
             <div class="param-desc">
@@ -502,8 +504,88 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               Список идентификаторов кампаний, для которых необходимо подготовить отчёт.
               <p style="margin-top:8px;">Формат отчёта:</p>
               <ul class="param-list">
-                <li>CSV — если в списке одна кампания</li>
+                <li>CSV — если в списке одна кампания.</li>
+                <li>ZIP архив — если в списке несколько кампаний. Каждый файл соответствует одной кампании из списка. Имя файла вида <code class="inline-code pink">&lt;идентификатор кампании&gt;.csv</code>.</li>
               </ul>
+            </div>
+          </div>
+
+          <!-- from -->
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Начальная дата периода отчёта в формате RFC 3339.</p>
+              <p>Максимальный период, за который можно получить отчёт — 62 дня.</p>
+            </div>
+          </div>
+
+          <!-- to -->
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Конечная дата периода отчёта в формате RFC 3339.</p>
+              <p>Максимальный период, за который можно получить отчёт — 62 дня.</p>
+            </div>
+          </div>
+
+          <!-- dateFrom -->
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Начальная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
+            </div>
+          </div>
+
+          <!-- dateTo -->
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Конечная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
+            </div>
+          </div>
+
+          <!-- groupBy -->
+          <div class="param-row">
+            <div class="param-name">groupBy</div>
+            <div class="param-desc">
+              <div class="param-type">string (extstatGroupBy)</div>
+              Default: <code class="inline-code pink">"NO_GROUP_BY"</code><br />
+              Enum: <code class="inline-code pink">"NO_GROUP_BY"</code> <code class="inline-code pink">"DATE"</code> <code class="inline-code pink">"START_OF_WEEK"</code> <code class="inline-code pink">"START_OF_MONTH"</code><br />
+              Тип группировки по времени:
+              <ul class="param-list" style="margin-top:6px">
+                <li><code class="inline-code pink">DATE</code> — группировка по дате (по дням);</li>
+                <li><code class="inline-code pink">START_OF_WEEK</code> — группировка по неделям;</li>
+                <li><code class="inline-code pink">START_OF_MONTH</code> — группировка по месяцам.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Ответы -->
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">UUID отчёта</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">UUID</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Уникальный идентификатор отчёта.</div></div>
+                <div class="schema-row"><div class="schema-field-name">vendor</div><div class="schema-field-desc"><span class="schema-type">boolean</span></div></div>
+              </div>
+            </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">›</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка</span>
+              </div>
+              <div class="response-accordion-body" style="display:none;"></div>
             </div>
           </div>
         </div>
@@ -525,7 +607,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           </div>
+
           <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-6">{
+  "UUID": "6c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
+  "vendor": true
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
+          </div>
         </div>
       </div>
     </section>
