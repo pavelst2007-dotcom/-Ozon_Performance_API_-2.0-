@@ -225,15 +225,8 @@
                   </div>
                 </div>
 
-                <div class="schema-row">
-                  <div class="schema-field-name">fromDate</div>
-                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Дата старта рекламной кампании.</div>
-                </div>
-
-                <div class="schema-row">
-                  <div class="schema-field-name">toDate</div>
-                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Дата завершения рекламной кампании.</div>
-                </div>
+                <div class="schema-row"><div class="schema-field-name">fromDate</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Дата старта рекламной кампании.</div></div>
+                <div class="schema-row"><div class="schema-field-name">toDate</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Дата завершения рекламной кампании.</div></div>
 
                 <div class="schema-row">
                   <div class="schema-field-name">autostopStatus</div>
@@ -251,33 +244,21 @@
                   </div>
                 </div>
 
-                <div class="schema-row">
-                  <div class="schema-field-name">isAutocreated</div>
-                  <div class="schema-field-desc"><span class="schema-type">boolean</span><br /><code class="inline-code green">true</code>, если кампания создана автоматически.</div>
-                </div>
+                <div class="schema-row"><div class="schema-field-name">isAutocreated</div><div class="schema-field-desc"><span class="schema-type">boolean</span><br /><code class="inline-code green">true</code>, если кампания создана автоматически.</div></div>
 
                 <div class="schema-row">
                   <div class="schema-field-name">budget</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string &lt;uint64&gt;</span><br />
-                    Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.</div>
                 </div>
 
                 <div class="schema-row">
                   <div class="schema-field-name">dailyBudget</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string &lt;uint64&gt;</span><br />
-                    Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.</div>
                 </div>
 
                 <div class="schema-row">
                   <div class="schema-field-name">weeklyBudget</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string &lt;uint64&gt;</span><br />
-                    Недельный бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Недельный бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code green">1 000 000</code> в параметре равно 1 рублю.</div>
                 </div>
 
                 <div class="schema-row">
@@ -308,7 +289,51 @@
                     <ul class="param-list" style="margin-top:6px">
                       <li><code class="inline-code green">MAX_VIEWS</code> — максимальное количество показов;</li>
                       <li><code class="inline-code green">MAX_CLICKS</code> — автостратегия для Поиска и рекомендаций;</li>
+                      <li><code class="inline-code green">TOP_MAX_CLICKS</code> — автостратегия для Поиска;</li>
+                      <li><code class="inline-code green">TAKEOVER</code> — спецразмещение для Поиска;</li>
+                      <li><code class="inline-code green">TOP_PROMOTION</code> — вывод в топ;</li>
+                      <li><code class="inline-code green">NO_AUTO_STRATEGY</code> — автостратегия не используется.</li>
                     </ul>
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">autopilot <span class="schema-toggle">˅</span></div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">object (extcampaignCampaignAutopilotProperties)</span><br />
+                    Информация о кампании. Возвращается, если в параметре <code class="inline-code green">productAutopilotStrategy</code> включена стратегия.
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">categoryId</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    Идентификатор категории.
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">skuAddMode</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Enum: <code class="inline-code orange">"PRODUCT_CAMPAIGN_SKU_ADD_MODE_UNKNOWN"</code> <code class="inline-code orange">"PRODUCT_CAMPAIGN_SKU_ADD_MODE_MANUAL"</code> <code class="inline-code orange">"PRODUCT_CAMPAIGN_SKU_ADD_MODE_AUTO"</code><br />
+                    Разрешение на автоматическое добавление товаров категории, указанной в <code class="inline-code green">categoryId</code>, в кампании со стратегией <code class="inline-code green">MAX_VIEWS</code>:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">PRODUCT_CAMPAIGN_SKU_ADD_MODE_UNKNOWN</code> — стратегия добавления товаров в кампанию не установлена;</li>
+                      <li><code class="inline-code green">PRODUCT_CAMPAIGN_SKU_ADD_MODE_MANUAL</code> — добавлять товары в кампанию можно только вручную;</li>
+                      <li><code class="inline-code green">PRODUCT_CAMPAIGN_SKU_ADD_MODE_AUTO</code> — можно добавлять товары категории <code class="inline-code green">categoryId</code> в кампанию автоматически.</li>
+                    </ul>
+                    <p>Если тип разрешения пустой или было передано <code class="inline-code green">PRODUCT_CAMPAIGN_SKU_ADD_MODE_UNKNOWN</code>, добавлять товары в кампанию можно только вручную.</p>
+                    <p>Для кампаний без стратегии <code class="inline-code green">MAX_VIEWS</code> возвращается значение <code class="inline-code green">PRODUCT_CAMPAIGN_SKU_ADD_MODE_UNKNOWN</code>.</p>
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">createdAt</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;date-time&gt;</span><br />
+                    Дата создания кампании в формате RFC3339.
                   </div>
                 </div>
 
