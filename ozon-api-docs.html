@@ -64,8 +64,8 @@
       <ul class="sidebar-menu">
         <li><span class="method-badge post">POST</span><a href="#statistics">Статистика по кампании<br /><span class="endpoint">/api/client/statistics</span></a></li>
         <li><span class="method-badge post">POST</span><a href="#statistics-video">Статистика по показам видеобаннера<br /><span class="endpoint">/api/client/statistics/video</span></a></li>
-        <li class="active"><span class="method-badge post">POST</span><a href="#statistics-attribution">Отчёт по заказам<br /><span class="endpoint">/api/client/statistics/attribution</span></a></li>
-        <li><span class="method-badge get">GET</span><a href="#statistics-uuid">Статус отчёта<br /><span class="endpoint">/api/client/statistics/{UUID}</span></a></li>
+        <li><span class="method-badge post">POST</span><a href="#statistics-attribution">Отчёт по заказам<br /><span class="endpoint">/api/client/statistics/attribution</span></a></li>
+        <li class="active"><span class="method-badge get">GET</span><a href="#statistics-uuid">Статус отчёта<br /><span class="endpoint">/api/client/statistics/{UUID}</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#statistics-list">Список отчётов, сгенерированных через интерфейс<br /><span class="endpoint">/api/client/statistics/list</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#statistics-externallist">Список отчётов, сгенерированных через API<br /><span class="endpoint">/api/client/statistics/externallist</span></a></li>
       </ul>
@@ -820,7 +820,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
             <div class="response-accordion open">
               <div class="response-accordion-header" onclick="toggleAccordion(this)">
                 <span class="resp-code-badge green">200</span>
-                <span class="resp-accordion-label">UUID отчёта</span>
+                <span class="resp-accordion-label">Отчёт по заказам</span>
                 <span class="resp-accordion-arrow">∨</span>
               </div>
               <div class="response-accordion-body">
@@ -878,6 +878,118 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-8">{
   "UUID": "0c159c60-ab92-46d9-9a6b-d225dbf5c7b1"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 9: STATISTICS UUID (Статус отчёта) ===== -->
+    <section id="statistics-uuid" class="method-section">
+      <h1 class="page-title">Статус отчёта</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/{UUID}</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">Используйте метод, чтобы проверить статус формирования отчёта или скачать готовый отчёт по его уникальному идентификатору (UUID).</p>
+
+          <div class="section-label">PATH PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">UUID<br /><span class="required-badge">required</span></div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Уникальный идентификатор отправленного запроса на формирование отчёта.</p>
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">Статус отчёта</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">UUID</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Уникальный идентификатор отправленного запроса.
+                  </div>
+                </div>
+                <div class="schema-row">
+                  <div class="schema-field-name">state</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Статус отчёта.<br />
+                    Enum: <code class="inline-code orange">"OK"</code> <code class="inline-code orange">"ERROR"</code> <code class="inline-code orange">"IN_PROGRESS"</code>
+                  </div>
+                </div>
+                <div class="schema-row">
+                  <div class="schema-field-name">error</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Описание ошибки, если отчёт не был сформирован.
+                  </div>
+                </div>
+                <div class="schema-row">
+                  <div class="schema-field-name">link</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Ссылка для скачивания готового отчёта. Доступна, когда <code class="inline-code orange">state</code> = <code class="inline-code orange">"OK"</code>.
+                  </div>
+                </div>
+                <div class="schema-row">
+                  <div class="schema-field-name">vendor</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">boolean</span><br />
+                    Если запрашивается отчёт с аналитикой внешнего трафика — <code class="inline-code pink">true</code>.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">∨</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка запроса</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">error</div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/0c159c60-ab92-46d9-9a6b-d225dbf5c7b1 HTTP/1.1
+Host: api-performance.ozon.ru:443
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-9">{
+  "UUID": "0c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
+  "state": "OK",
+  "error": "",
+  "link": "https://api-performance.ozon.ru/api/client/statistics/report?UUID=0c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
+  "vendor": false
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           </div>
