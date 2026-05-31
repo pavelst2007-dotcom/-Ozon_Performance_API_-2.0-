@@ -70,7 +70,6 @@
           <div class="param-row"><div class="param-name">state</div><div class="param-desc"><div class="param-type">string</div><p>Default: <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code></p><p>Enum: <code class="inline-code orange">"CAMPAIGN_STATE_UNKNOWN"</code> <code class="inline-code orange">"CAMPAIGN_STATE_RUNNING"</code> <code class="inline-code orange">"CAMPAIGN_STATE_PLANNED"</code> <code class="inline-code orange">"CAMPAIGN_STATE_STOPPED"</code> <code class="inline-code orange">"CAMPAIGN_STATE_INACTIVE"</code> <code class="inline-code orange">"CAMPAIGN_STATE_ARCHIVED"</code> <code class="inline-code orange">"CAMPAIGN_STATE_MODERATION_DRAFT"</code> <code class="inline-code orange">"CAMPAIGN_STATE_MODERATION_IN_PROGRESS"</code> <code class="inline-code orange">"CAMPAIGN_STATE_MODERATION_FAILED"</code> <code class="inline-code orange">"CAMPAIGN_STATE_FINISHED"</code></p><p>Состояние кампании.</p><ul class="param-list"><li><code class="inline-code green">CAMPAIGN_STATE_RUNNING</code> — активная кампания;</li><li><code class="inline-code green">CAMPAIGN_STATE_PLANNED</code> — сроки не наступили;</li><li><code class="inline-code green">CAMPAIGN_STATE_STOPPED</code> — нехватка бюджета;</li><li><code class="inline-code green">CAMPAIGN_STATE_INACTIVE</code> — остановлена владельцем;</li><li><code class="inline-code green">CAMPAIGN_STATE_ARCHIVED</code> — архивная;</li><li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_DRAFT</code> — черновик;</li><li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_IN_PROGRESS</code> — на модерации;</li><li><code class="inline-code green">CAMPAIGN_STATE_MODERATION_FAILED</code> — не прошла модерацию;</li><li><code class="inline-code green">CAMPAIGN_STATE_FINISHED</code> — завершена.</li></ul></div></div>
           <div class="param-row"><div class="param-name">page</div><div class="param-desc"><div class="param-type">integer &lt;int64&gt;</div><p>Номер страницы. Пагинация начинается с единицы.</p></div></div>
           <div class="param-row"><div class="param-name">pageSize</div><div class="param-desc"><div class="param-type">integer &lt;int64&gt;</div><p>Размер страницы.</p></div></div>
-
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
             <div class="response-accordion open"><div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Список всех кампаний</span><span class="resp-accordion-arrow">∨</span></div>
@@ -168,27 +167,16 @@ Accept: application/json</pre></div>
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
                 <div class="schema-row top-level"><div class="schema-field-name">list <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div><div class="schema-field-desc"><span class="schema-type">Array of objects (extcampaignCampaignObject)</span><br />Список идентификаторов рекламируемых объектов.</div></div>
                 <div class="schema-array-block"><div class="schema-array-label">Array () [</div>
-                  <div class="schema-row">
-                    <div class="schema-field-name">id</div>
-                    <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор рекламируемого объекта:<ul class="param-list" style="margin-top:6px"><li>SKU — для рекламы товаров в спонсорских полках и в каталоге;</li><li>числовой идентификатор — для баннерных кампаний.</li></ul></div>
-                  </div>
+                  <div class="schema-row"><div class="schema-field-name">id</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор рекламируемого объекта:<ul class="param-list" style="margin-top:6px"><li>SKU — для рекламы товаров в спонсорских полках и в каталоге;</li><li>числовой идентификатор — для баннерных кампаний.</li></ul></div></div>
                   <div class="schema-array-close">]</div>
                 </div>
               </div>
             </div>
-            <!-- default error - expanded with schema -->
             <div class="response-accordion open">
-              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
-                <span class="resp-accordion-arrow">∨</span>
-                <span class="resp-code-badge gray">default</span>
-                <span class="resp-accordion-label">Ошибка запроса</span>
-              </div>
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">∨</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
               <div class="response-accordion-body">
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
-                <div class="schema-row">
-                  <div class="schema-field-name">error</div>
-                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
-                </div>
+                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div></div>
               </div>
             </div>
           </div>
@@ -243,14 +231,91 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               </ul>
             </li>
           </ul>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">Лимиты ставок</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row top-level">
+                  <div class="schema-field-name">limits <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
+                  <div class="schema-field-desc"><span class="schema-type">Array of objects (extcampaignLimitsData)</span><br />Минимальные и максимальные ставки для инструментов продвижения.</div>
+                </div>
+                <div class="schema-array-block">
+                  <div class="schema-array-label">Array () [</div>
+
+                  <div class="schema-row">
+                    <div class="schema-field-name">categories <span class="schema-toggle">&gt;</span></div>
+                    <div class="schema-field-desc">
+                      <span class="schema-type">Array of objects (extcampaignCategoriesLimits)</span><br />
+                      Минимальная ставка для категории второго уровня. Если категории нет в списке, применяется минимальная ставка для инструмента.
+                    </div>
+                  </div>
+
+                  <div class="schema-row">
+                    <div class="schema-field-name">maxBid</div>
+                    <div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Максимальная ставка в рублях.</div>
+                  </div>
+
+                  <div class="schema-row">
+                    <div class="schema-field-name">minBid</div>
+                    <div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Минимальная ставка в рублях.</div>
+                  </div>
+
+                  <div class="schema-row">
+                    <div class="schema-field-name">objectType</div>
+                    <div class="schema-field-desc">
+                      <span class="schema-type">string</span><br />
+                      Enum: <code class="inline-code orange">"SKU"</code> <code class="inline-code orange">"SEARCH_PROMO"</code><br />
+                      Тип инструмента:
+                      <ul class="param-list" style="margin-top:6px">
+                        <li><code class="inline-code green">SKU</code> — Оплата за клик,</li>
+                        <li><code class="inline-code green">SEARCH_PROMO</code> — Оплата за заказ.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="schema-row">
+                    <div class="schema-field-name">paymentMethod</div>
+                    <div class="schema-field-desc"><span class="schema-type">string</span></div>
+                  </div>
+
+                  <div class="schema-array-close">]</div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+          </div>
         </div>
+
         <div class="examples-section">
           <h2 class="examples-title">Примеры ответа</h2>
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-3">{
+  "limits": [
+    {
+      "categories": [
+        {
+          "bid": 0,
+          "category": "string"
+        }
+      ],
+      "maxBid": 0,
+      "minBid": 0,
+      "objectType": "SKU",
+      "paymentMethod": "CPO",
+      "placement": "CAMPAIGN_PLACEMENT_SEARCH_AND_CATEGORY"
+    }
+  ]
 }</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           </div>
         </div>
       </div>
