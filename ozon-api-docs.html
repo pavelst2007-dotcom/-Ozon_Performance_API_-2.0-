@@ -731,7 +731,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
             <li>названия товаров;</li>
             <li>количество заказов;</li>
             <li>выручка в рублях;</li>
-            <li>расход.</li>
+            <li>количество заказов модели;</li>
+            <li>выручка с заказов модели;</li>
+            <li>тип атрибуции.</li>
           </ul>
 
           <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте в адрес метода <code class="inline-code pink">/json</code> и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/attribution/json</code>.</p>
@@ -818,13 +820,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                     По нему можно <a href="#statistics-uuid" class="link-blue">проверить статус формирования отчёта</a> и <a href="#statistics-uuid" class="link-blue">скачать отчёт</a>.
                   </div>
                 </div>
-                <div class="schema-row">
-                  <div class="schema-field-name">vendor</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">boolean</span><br />
-                    Если запрашивается отчёт с аналитикой внешнего трафика — <code class="inline-code pink">true</code>.
-                  </div>
-                </div>
               </div>
             </div>
             <div class="response-accordion open">
@@ -869,8 +864,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-8">{
-  "UUID": "0c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
-  "vendor": true
+  "UUID": "0c159c60-ab92-46d9-9a6b-d225dbf5c7b1"
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           </div>
