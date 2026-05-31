@@ -896,14 +896,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
       <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
       <div class="tab-content">
         <div class="params-section">
-          <p class="method-description">Используйте метод, чтобы проверить статус формирования отчёта или скачать готовый отчёт по его уникальному идентификатору (UUID).</p>
 
           <div class="section-label">PATH PARAMETERS</div>
           <div class="param-row">
             <div class="param-name">UUID<br /><span class="required-badge">required</span></div>
             <div class="param-desc">
               <div class="param-type">string</div>
-              <p>Уникальный идентификатор отправленного запроса на формирование отчёта.</p>
+              <p>Уникальный идентификатор запроса.</p>
             </div>
           </div>
 
@@ -917,21 +916,38 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               </div>
               <div class="response-accordion-body">
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+
                 <div class="schema-row">
                   <div class="schema-field-name">UUID</div>
                   <div class="schema-field-desc">
                     <span class="schema-type">string</span><br />
-                    Уникальный идентификатор отправленного запроса.
+                    Уникальный идентификатор запроса, для которого производилась проверка.
                   </div>
                 </div>
+
                 <div class="schema-row">
                   <div class="schema-field-name">state</div>
                   <div class="schema-field-desc">
-                    <span class="schema-type">string</span><br />
-                    Статус отчёта.<br />
-                    Enum: <code class="inline-code orange">"OK"</code> <code class="inline-code orange">"ERROR"</code> <code class="inline-code orange">"IN_PROGRESS"</code>
+                    <span class="schema-type">string (extstatStatisticsRequestState)</span><br />
+                    Default: <code class="inline-code orange">"NOT_STARTED"</code><br />
+                    Enum: <code class="inline-code orange">"NOT_STARTED"</code> <code class="inline-code orange">"IN_PROGRESS"</code> <code class="inline-code orange">"ERROR"</code> <code class="inline-code orange">"OK"</code><br />
+                    Текущее состояние запроса:
+                    <ul class="param-list" style="margin-top:6px">
+                      <li><code class="inline-code green">NOT_STARTED</code> — запрос ожидает выполнения;</li>
+                      <li><code class="inline-code green">IN_PROGRESS</code> — запрос выполняется в данный момент;</li>
+                      <li><code class="inline-code red">ERROR</code> — выполнение запроса завершилось ошибкой;</li>
+                      <li><code class="inline-code green">OK</code> — запрос успешно выполнен.</li>
+                    </ul>
                   </div>
                 </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">createdAt</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;date-time&gt;</span>
+                  </div>
+                </div>
+
                 <div class="schema-row">
                   <div class="schema-field-name">error</div>
                   <div class="schema-field-desc">
@@ -939,6 +955,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                     Описание ошибки, если отчёт не был сформирован.
                   </div>
                 </div>
+
                 <div class="schema-row">
                   <div class="schema-field-name">link</div>
                   <div class="schema-field-desc">
@@ -946,6 +963,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                     Ссылка для скачивания готового отчёта. Доступна, когда <code class="inline-code orange">state</code> = <code class="inline-code orange">"OK"</code>.
                   </div>
                 </div>
+
                 <div class="schema-row">
                   <div class="schema-field-name">vendor</div>
                   <div class="schema-field-desc">
@@ -976,9 +994,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <h2 class="examples-title">Примеры запроса</h2>
           <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/0c159c60-ab92-46d9-9a6b-d225dbf5c7b1 HTTP/1.1
 Host: api-performance.ozon.ru:443
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
 Content-Type: application/json
-Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></div>
+Accept: application/json</pre></div>
           <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           <h2 class="examples-title">Примеры ответа</h2>
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
@@ -987,9 +1005,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
             <div class="code-block response-code"><pre id="response-json-9">{
   "UUID": "0c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
   "state": "OK",
-  "error": "",
-  "link": "https://api-performance.ozon.ru/api/client/statistics/report?UUID=0c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
-  "vendor": false
+  "createdAt": "2020-03-23T19:30:58.266653Z",
+  "updatedAt": "2020-03-23T19:30:58.689007Z",
+  "request": {
+    "attributionDays": "",
+    "campaignId": 1
+  }
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           </div>
