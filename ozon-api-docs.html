@@ -42,8 +42,8 @@
         <li><span class="method-badge get">GET</span><a href="#list-campaigns">Список кампаний<br /><span class="endpoint">/api/client/campaign</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#list-objects">Список продвигаемых объектов в кампании<br /><span class="endpoint">/api/client/campaign/{campaignId}/objects</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#list-limits">Лимиты ставок для инструментов продвижения<br /><span class="endpoint">/api/client/limits/list</span></a></li>
-        <li class="active"><span class="method-badge post">POST</span><a href="#min-sku">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a></li>
-        <li><span class="method-badge get">GET</span><a href="#">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a></li>
+        <li><span class="method-badge post">POST</span><a href="#min-sku">Минимальная ставка для товаров по SKU<br /><span class="endpoint">/api/client/min/sku</span></a></li>
+        <li><span class="method-badge get">GET</span><a href="#products-with-bonuses">Список товаров с бонусами<br /><span class="endpoint">/api/client/products/with_bonuses</span></a></li>
       </ul>
     </div>
     <div class="sidebar-group"><div class="sidebar-group-title collapsible">Статистика <span class="arrow">›</span></div></div>
@@ -354,10 +354,33 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                 <span class="resp-accordion-arrow">∨</span>
               </div>
               <div class="response-accordion-body">
-                <!-- response schema will be added on next screenshot -->
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row top-level">
+                  <div class="schema-field-name">minBids <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
+                  <div class="schema-field-desc"><span class="schema-type">Array of objects (BidBySKUResponseBidSKU)</span><br />Информация о минимальных ставках.</div>
+                </div>
+                <div class="schema-array-block">
+                  <div class="schema-array-label">Array () [</div>
+                  <div class="schema-row">
+                    <div class="schema-field-name">bid</div>
+                    <div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Размер ставки.</div>
+                  </div>
+                  <div class="schema-row">
+                    <div class="schema-field-name">sku</div>
+                    <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор товара: Ozon ID или SKU.</div>
+                  </div>
+                  <div class="schema-array-close">]</div>
+                </div>
               </div>
             </div>
-            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">›</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка</span>
+              </div>
+              <div class="response-accordion-body" style="display:none;"></div>
+            </div>
           </div>
         </div>
 
@@ -378,10 +401,31 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-4">{
-  - "minBids": [
-    - {
-</pre></div>
+  "minBids": [
+    {
+      "bid": 0,
+      "sku": "string"
+    }
+  ]
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 5: PRODUCTS WITH BONUSES ===== -->
+    <section id="products-with-bonuses" class="method-section">
+      <h1 class="page-title">Список товаров с бонусами</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/products_with_bonuses</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <!-- content will be added on next screenshot -->
         </div>
       </div>
     </section>
