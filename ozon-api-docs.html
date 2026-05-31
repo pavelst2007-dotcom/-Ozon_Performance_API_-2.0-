@@ -257,12 +257,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                 </div>
                 <div class="schema-array-block">
                   <div class="schema-array-label">Array () [</div>
-                  <div class="schema-row"><div class="schema-field-name">categories <span class="schema-toggle">&gt;</span></div><div class="schema-field-desc"><span class="schema-type">Array of objects (extcampaignCategoriesLimits)</span><br />Минимальная ставка для категории второго уровня. Если категории нет в списке, применяется минимальная ставка для инструмента.</div></div>
+                  <div class="schema-row"><div class="schema-field-name">categories <span class="schema-toggle">&gt;</span></div><div class="schema-field-desc"><span class="schema-type">Array of objects (extcampaignCategoriesLimits)</span><br />Минимальная ставка для категории второго уровня.</div></div>
                   <div class="schema-row"><div class="schema-field-name">maxBid</div><div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Максимальная ставка в рублях.</div></div>
                   <div class="schema-row"><div class="schema-field-name">minBid</div><div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Минимальная ставка в рублях.</div></div>
-                  <div class="schema-row"><div class="schema-field-name">objectType</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Enum: <code class="inline-code orange">"SKU"</code> <code class="inline-code orange">"SEARCH_PROMO"</code><br />Тип инструмента:<ul class="param-list" style="margin-top:6px"><li><code class="inline-code green">SKU</code> — Оплата за клик,</li><li><code class="inline-code green">SEARCH_PROMO</code> — Оплата за заказ.</li></ul></div></div>
-                  <div class="schema-row"><div class="schema-field-name">paymentMethod</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Enum: <code class="inline-code orange">"CPO"</code> <code class="inline-code orange">"CPC"</code> <code class="inline-code orange">"CPM"</code><br />Способ оплаты:<ul class="param-list" style="margin-top:6px"><li><code class="inline-code green">CPO</code> — оплата за заказ,</li><li><code class="inline-code green">CPC</code> — оплата за клик,</li><li><code class="inline-code green">CPM</code> — оплата за 1000 показов.</li></ul></div></div>
-                  <div class="schema-row"><div class="schema-field-name">placement</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Enum: <code class="inline-code orange">"CAMPAIGN_PLACEMENT_SEARCH_AND_CATEGORY"</code> <code class="inline-code orange">"CAMPAIGN_PLACEMENT_TOP_PROMOTION"</code> <code class="inline-code orange">"CAMPAIGN_PLACEMENT_OVERTOP"</code><br />Тип кампании:<ul class="param-list" style="margin-top:6px"><li><code class="inline-code green">CAMPAIGN_PLACEMENT_SEARCH_AND_CATEGORY</code> — Поиск и рекомендации;</li><li><code class="inline-code green">CAMPAIGN_PLACEMENT_TOP_PROMOTION</code> — Поиск;</li><li><code class="inline-code green">CAMPAIGN_PLACEMENT_OVERTOP</code> — Спецразмещение.</li></ul></div></div>
+                  <div class="schema-row"><div class="schema-field-name">objectType</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Enum: <code class="inline-code orange">"SKU"</code> <code class="inline-code orange">"SEARCH_PROMO"</code></div></div>
+                  <div class="schema-row"><div class="schema-field-name">paymentMethod</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Enum: <code class="inline-code orange">"CPO"</code> <code class="inline-code orange">"CPC"</code> <code class="inline-code orange">"CPM"</code></div></div>
+                  <div class="schema-row"><div class="schema-field-name">placement</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Enum: <code class="inline-code orange">"CAMPAIGN_PLACEMENT_SEARCH_AND_CATEGORY"</code> <code class="inline-code orange">"CAMPAIGN_PLACEMENT_TOP_PROMOTION"</code> <code class="inline-code orange">"CAMPAIGN_PLACEMENT_OVERTOP"</code></div></div>
                   <div class="schema-array-close">]</div>
                 </div>
               </div>
@@ -284,12 +284,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
             <div class="code-block response-code"><pre id="response-json-3">{
   "limits": [
     {
-      "categories": [
-        {
-          "bid": 0,
-          "category": "string"
-        }
-      ],
+      "categories": [{"bid": 0,"category": "string"}],
       "maxBid": 0,
       "minBid": 0,
       "objectType": "SKU",
@@ -321,26 +316,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
             <div class="param-name">marketplaceId</div>
             <div class="param-desc">
               <div class="param-type">string (camptypeMarketplaceID)</div>
-              Enum: <code class="inline-code orange">"MARKETPLACE_ID_RU"</code> <code class="inline-code orange">"MARKETPLACE_ID_KZ"</code> <code class="inline-code orange">"MARKETPLACE_ID_BY"</code><br />
-              Страна витрины:
-              <ul class="param-list" style="margin-top:6px">
-                <li><code class="inline-code green">MARKETPLACE_ID_RU</code> — Россия;</li>
-                <li><code class="inline-code green">MARKETPLACE_ID_KZ</code> — Казахстан;</li>
-                <li><code class="inline-code green">MARKETPLACE_ID_BY</code> — Белоруссия.</li>
-              </ul>
+              Enum: <code class="inline-code orange">"MARKETPLACE_ID_RU"</code> <code class="inline-code orange">"MARKETPLACE_ID_KZ"</code> <code class="inline-code orange">"MARKETPLACE_ID_BY"</code>
             </div>
           </div>
           <div class="param-row">
             <div class="param-name">paymentType</div>
             <div class="param-desc">
               <div class="param-type">string (string)</div>
-              Enum: <code class="inline-code orange">"CPO"</code> <code class="inline-code orange">"CPC"</code> <code class="inline-code orange">"CPC_TOP"</code><br />
-              Тип минимальной ставки:
-              <ul class="param-list" style="margin-top:6px">
-                <li><code class="inline-code green">CPO</code> — по кампании «Оплата за заказ»;</li>
-                <li><code class="inline-code green">CPC</code> — по поиску и рекомендациям;</li>
-                <li><code class="inline-code green">CPC_TOP</code> — по поиску.</li>
-              </ul>
+              Enum: <code class="inline-code orange">"CPO"</code> <code class="inline-code orange">"CPC"</code> <code class="inline-code orange">"CPC_TOP"</code>
             </div>
           </div>
           <div class="param-row">
@@ -362,12 +345,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
                 <div class="schema-row top-level">
                   <div class="schema-field-name">minBids <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
-                  <div class="schema-field-desc"><span class="schema-type">Array of objects (BidBySKUResponseBidSKU)</span><br />Информация о минимальных ставках.</div>
+                  <div class="schema-field-desc"><span class="schema-type">Array of objects (BidBySKUResponseBidSKU)</span></div>
                 </div>
                 <div class="schema-array-block">
                   <div class="schema-array-label">Array () [</div>
-                  <div class="schema-row"><div class="schema-field-name">bid</div><div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Размер ставки.</div></div>
-                  <div class="schema-row"><div class="schema-field-name">sku</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор товара: Ozon ID или SKU.</div></div>
+                  <div class="schema-row"><div class="schema-field-name">bid</div><div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span></div></div>
+                  <div class="schema-row"><div class="schema-field-name">sku</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span></div></div>
                   <div class="schema-array-close">]</div>
                 </div>
               </div>
@@ -384,9 +367,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <div class="code-block request-block"><pre id="request-json-4">{
   "marketplaceId": <span class="string-val">"MARKETPLACE_ID_RU"</span>,
   "paymentType": <span class="string-val">"CPO"</span>,
-  "sku": [
-    <span class="string-val">"string"</span>
-  ]
+  "sku": [<span class="string-val">"string"</span>]
 }</pre></div>
           <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           <h2 class="examples-title">Примеры ответа</h2>
@@ -394,14 +375,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-4">{
-  "minBids": [
-    {
-      "bid": 0,
-      "sku": "string"
-    }
-  ]
+  "minBids": [{"bid": 0,"sku": "string"}]
 }</pre></div>
-            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           </div>
         </div>
       </div>
@@ -451,12 +426,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
-            <div class="code-block response-code"><pre id="response-json-5">{
-  "skus": [
-    "string"
-  ]
-}</pre></div>
-            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
+            <div class="code-block response-code"><pre id="response-json-5">{"skus": ["string"]}</pre></div>
           </div>
         </div>
       </div>
@@ -508,7 +478,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               </ul>
             </div>
           </div>
-
           <div class="param-row">
             <div class="param-name">from</div>
             <div class="param-desc">
@@ -517,7 +486,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               <p>Максимальный период, за который можно получить отчёт — 62 дня.</p>
             </div>
           </div>
-
           <div class="param-row">
             <div class="param-name">to</div>
             <div class="param-desc">
@@ -526,7 +494,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               <p>Максимальный период, за который можно получить отчёт — 62 дня.</p>
             </div>
           </div>
-
           <div class="param-row">
             <div class="param-name">dateFrom</div>
             <div class="param-desc">
@@ -534,7 +501,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               <p>Начальная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
             </div>
           </div>
-
           <div class="param-row">
             <div class="param-name">dateTo</div>
             <div class="param-desc">
@@ -542,7 +508,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               <p>Конечная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
             </div>
           </div>
-
           <div class="param-row">
             <div class="param-name">groupBy</div>
             <div class="param-desc">
@@ -608,9 +573,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="request-json-6">{
-  "campaigns": [
-    "string"
-  ],
+  "campaigns": ["string"],
   "from": "2019-08-24T14:15:22Z",
   "to": "2019-08-24T14:15:22Z",
   "dateFrom": "string",
@@ -619,7 +582,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           </div>
-
           <h2 class="examples-title">Примеры ответа</h2>
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
           <div class="response-block">
@@ -646,7 +608,116 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
       <div class="tab-content">
         <div class="params-section">
           <p class="method-description">В запросе укажите временной промежуток с помощью полей <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>.</p>
-          <p class="method-description">Performance API асинхронный. Поэтому в результате запроса будет не сам отчёт, а уникальный идентификатор отправленного запроса, с помощью которого можно <a href="#statistics-uuid" class="link-blue">проверить статус формирования</a> отчёта и скачать отчёт. Формат отчёта — CSV.</p>
+          <p class="method-description">Performance API асинхронный. Поэтому в результате запроса будет не сам отчёт, а уникальный идентификатор отправленного запроса, с помощью которого можно <a href="#statistics-uuid" class="link-blue">проверить статус формирования отчёта</a> и <a href="#statistics-uuid" class="link-blue">скачать отчёт</a>. Формат отчёта — CSV.</p>
+
+          <p class="method-description">Отчёт содержит:</p>
+          <ul class="param-list">
+            <li>название;</li>
+            <li>идентификатор кампании;</li>
+            <li>период отчёта;</li>
+            <li>идентификатор баннера;</li>
+            <li>показы;</li>
+            <li>клики;</li>
+            <li>охват;</li>
+            <li>CTR;</li>
+            <li>доля видимых показов;</li>
+            <li>досмотры по квартилям: 25%, 50%, 75% и 100%;</li>
+            <li>доля досмотров: 25%, 50%, 75% и 100%;</li>
+            <li>просмотры со звуком;</li>
+            <li>заказы;</li>
+            <li>расход.</li>
+          </ul>
+
+          <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте в адрес метода <code class="inline-code pink">/json</code> и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/video/json</code>.</p>
+
+          <div class="section-label">REQUEST BODY SCHEMA: application/json</div>
+
+          <div class="param-row">
+            <div class="param-name">campaigns<br /><span class="required-badge">required</span></div>
+            <div class="param-desc">
+              <div class="param-type">Array of strings &lt;uint64&gt;</div>
+              Список идентификаторов кампаний, для которых необходимо подготовить отчёт.
+              <p style="margin-top:8px;">Формат отчёта:</p>
+              <ul class="param-list">
+                <li>CSV — если в списке одна кампания.</li>
+                <li>ZIP архив — если в списке несколько кампаний. Каждый файл соответствует одной кампании из списка. Имя файла вида <code class="inline-code pink">&lt;идентификатор кампании&gt;.csv</code>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Начальная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Конечная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">groupBy</div>
+            <div class="param-desc">
+              <div class="param-type">string (extstatGroupBy)</div>
+              Default: <code class="inline-code pink">"NO_GROUP_BY"</code><br />
+              Enum: <code class="inline-code pink">"NO_GROUP_BY"</code> <code class="inline-code pink">"DATE"</code> <code class="inline-code pink">"START_OF_WEEK"</code> <code class="inline-code pink">"START_OF_MONTH"</code><br />
+              Тип группировки по времени:
+              <ul class="param-list" style="margin-top:6px">
+                <li><code class="inline-code pink">DATE</code> — группировка по дате (по дням);</li>
+                <li><code class="inline-code pink">START_OF_WEEK</code> — группировка по неделям;</li>
+                <li><code class="inline-code pink">START_OF_MONTH</code> — группировка по месяцам.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">UUID отчёта</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">UUID</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Уникальный идентификатор отправленного запроса.<br />
+                    По нему можно <a href="#statistics-uuid" class="link-blue">проверить статус формирования отчёта</a> и <a href="#statistics-uuid" class="link-blue">скачать отчёт</a>.
+                  </div>
+                </div>
+                <div class="schema-row">
+                  <div class="schema-field-name">vendor</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">boolean</span><br />
+                    Если запрашивается отчёт с аналитикой внешнего трафика — <code class="inline-code pink">true</code>.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">∨</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка запроса</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">error</div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="examples-section">
@@ -664,6 +735,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
   "dateFrom": "string",
   "dateTo": "string",
   "groupBy": "NO_GROUP_BY"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
+          </div>
+
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-7">{
+  "UUID": "0c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
+  "vendor": true
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link" onclick="collapseAllJson()">⇕ Свернуть всё</span></div>
           </div>
