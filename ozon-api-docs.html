@@ -69,7 +69,7 @@
         <li><span class="method-badge get">GET</span><a href="#statistics-list">Список отчётов, сгенерированных через интерфейс<br /><span class="endpoint">/api/client/statistics/list</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#statistics-externallist">Список отчётов, сгенерированных через API<br /><span class="endpoint">/api/client/statistics/externallist</span></a></li>
         <li><span class="method-badge get">GET</span><a href="#statistics-report">Получить отчёты<br /><span class="endpoint">/api/client/statistics/report</span></a></li>
-        <li><span class="method-badge get">GET</span><a href="#statistics-campaign-media">Статистика по медийным кампаниям<br /><span class="endpoint">/api/client/statistics/campaign/media</span></a></li>
+        <li class="active"><span class="method-badge get">GET</span><a href="#statistics-campaign-media">Статистика по медийным кампаниям<br /><span class="endpoint">/api/client/statistics/campaign/media</span></a></li>
       </ul>
     </div>
     <div class="sidebar-group"><div class="sidebar-group-title collapsible">Оплата за клик <span class="arrow">›</span></div></div>
@@ -1006,8 +1006,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
 
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
-
-            <!-- 200 -->
             <div class="response-accordion open">
               <div class="response-accordion-header" onclick="toggleAccordion(this)">
                 <span class="resp-code-badge green">200</span>
@@ -1034,8 +1032,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
                 </div>
               </div>
             </div>
-
-            <!-- 404 -->
             <div class="response-accordion">
               <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
                 <span class="resp-accordion-arrow">›</span>
@@ -1044,8 +1040,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></
               </div>
               <div class="response-accordion-body" style="display:none;"></div>
             </div>
-
-            <!-- default -->
             <div class="response-accordion">
               <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
                 <span class="resp-accordion-arrow">›</span>
@@ -1090,7 +1084,60 @@ sku; Название товара; Цена товара, Р; Показы; К�
       <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
       <div class="tab-content">
         <div class="params-section">
-          <p class="method-description">Метод для получения статистики по медийным рекламным кампаниям.</p>
+          <p class="method-description">В запросе укажите временной промежуток с помощью полей <code class="inline-code pink">from</code> и <code class="inline-code pink">to</code> или <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>. Если заполнены все четыре поля, в ответе будет статистика по временному промежутку из полей <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>.</p>
+          <p class="method-description">Формат отчёта — CSV.</p>
+          <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте в адрес метода <code class="inline-code pink">/json</code> и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/campaign/media/json</code>.</p>
+          <p class="method-description">Отчёт содержит:</p>
+          <ul class="param-list">
+            <li>идентификатор кампании;</li>
+            <li>название кампании;</li>
+            <li>формат кампании;</li>
+            <li>статус кампании;</li>
+            <li>дневной бюджет в рублях;</li>
+            <li>бюджет в рублях;</li>
+            <li>расход в рублях;</li>
+            <li>показы;</li>
+            <li>клики;</li>
+            <li>средняя цена 1000 показов в рублях;</li>
+            <li>отношение числа кликов к числу показов (CTR);</li>
+            <li>средняя цена клика в рублях;</li>
+            <li>заказы в штуках;</li>
+            <li>заказы после просмотра в штуках;</li>
+            <li>сумма заказов после просмотра;</li>
+            <li>доля рекламных расходов (ДРР);</li>
+            <li>сумма заказов;</li>
+            <li>тип оплаты.</li>
+          </ul>
+
+          <div class="section-label">QUERY PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Начальная дата периода отчёта в формате RFC 3339.</p>
+            </div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Конечная дата периода отчёта в формате RFC 3339.</p>
+            </div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Начальная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2024-08-01</code>.</p>
+            </div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Конечная дата периода отчёта в формате ГГГГ-ММ-ДД.</p>
+            </div>
+          </div>
 
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
@@ -1102,19 +1149,9 @@ sku; Название товара; Цена товара, Р; Показы; К�
               </div>
               <div class="response-accordion-body">
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
-                <div class="schema-row top-level">
-                  <div class="schema-field-name">campaigns <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
-                  <div class="schema-field-desc"><span class="schema-type">Array of objects</span><br />Список медийных кампаний со статистикой.</div>
-                </div>
-                <div class="schema-array-block">
-                  <div class="schema-array-label">Array () [</div>
-                  <div class="schema-row"><div class="schema-field-name">campaignId</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор кампании.</div></div>
-                  <div class="schema-row"><div class="schema-field-name">title</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Название кампании.</div></div>
-                  <div class="schema-row"><div class="schema-field-name">impressions</div><div class="schema-field-desc"><span class="schema-type">integer</span><br />Количество показов.</div></div>
-                  <div class="schema-row"><div class="schema-field-name">clicks</div><div class="schema-field-desc"><span class="schema-type">integer</span><br />Количество кликов.</div></div>
-                  <div class="schema-row"><div class="schema-field-name">ctr</div><div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />CTR (%).</div></div>
-                  <div class="schema-row"><div class="schema-field-name">spend</div><div class="schema-field-desc"><span class="schema-type">number &lt;double&gt;</span><br />Расход бюджета.</div></div>
-                  <div class="schema-array-close">]</div>
+                <div class="schema-row">
+                  <div class="schema-field-name">contentType</div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Тип содержимого ответа.</div>
                 </div>
               </div>
             </div>
@@ -1131,35 +1168,10 @@ sku; Название товара; Цена товара, Р; Показы; К�
 
         <div class="examples-section">
           <h2 class="examples-title">Примеры запроса</h2>
-          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/campaign/media
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/campaign/media?dateFrom=2024-08-01&amp;dateTo=2024-08-31
 Host: api-performance.ozon.ru:443
-Accept: application/json</pre></div>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
+Content-Type: application/json</pre></div>
           <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           <h2 class="examples-title">Примеры ответа</h2>
-          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
-          <div class="response-block">
-            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
-            <div class="code-block response-code"><pre id="response-json-13">{
-  "campaigns": [
-    {
-      "campaignId": "13883040",
-      "title": "Медийная кампания",
-      "impressions": 15000,
-      "clicks": 320,
-      "ctr": 2.13,
-      "spend": 4500.00
-    }
-  ]
-}</pre></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-</div>
-
-<script src="ozon-api-docs.js"></script>
-</body>
-</html>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default<
