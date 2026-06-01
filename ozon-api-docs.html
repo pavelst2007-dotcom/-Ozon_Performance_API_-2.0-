@@ -1068,6 +1068,24 @@ Accept: application/json</pre></div>
       <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
       <div class="tab-content">
         <div class="params-section">
+          <p class="method-description">Метод для получения списка отчётов, которые сгенерированы через интерфейс рекламного кабинета.</p>
+
+          <div class="section-label">QUERY PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">page</div>
+            <div class="param-desc">
+              <div class="param-type">integer &lt;int64&gt;</div>
+              Номер страницы.
+            </div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">pageSize</div>
+            <div class="param-desc">
+              <div class="param-type">integer &lt;int64&gt;</div>
+              Размер страницы.
+            </div>
+          </div>
+
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
             <div class="response-accordion open">
@@ -1078,9 +1096,13 @@ Accept: application/json</pre></div>
               </div>
               <div class="response-accordion-body">
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row top-level">
+                  <div class="schema-field-name">items <span class="schema-toggle" onclick="toggleSchemaBlock(this)">›</span></div>
+                  <div class="schema-field-desc"><span class="schema-type">Array of objects (extstatStatisticsReportsListItem)</span><br />Список отчётов.</div>
+                </div>
                 <div class="schema-row">
-                  <div class="schema-field-name">list <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div>
-                  <div class="schema-field-desc"><span class="schema-type">Array of objects</span><br />Список отчётов.</div>
+                  <div class="schema-field-name">total</div>
+                  <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Количество отчётов.</div>
                 </div>
               </div>
             </div>
@@ -1102,12 +1124,36 @@ Accept: application/json</pre></div>
         </div>
         <div class="examples-section">
           <h2 class="examples-title">Примеры запроса</h2>
-          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/list HTTP/1.1
+          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/list?page=1&amp;pageSize=100 HTTP/1.1
 Host: api-performance.ozon.ru:443
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
 Content-Type: application/json
 Accept: application/json</pre></div>
           <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-10">{
+  "items": [
+    {
+      "campaigns": [
+        {
+          "id": "string",
+          "title": "string"
+        }
+      ],
+      "meta": {
+        "UUID": "string",
+        "state": "NOT_STARTED",
+        "createdAt": "2019-08-24T14:15:22Z"
+      }
+    }
+  ],
+  "total": "string"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
         </div>
       </div>
     </section>
