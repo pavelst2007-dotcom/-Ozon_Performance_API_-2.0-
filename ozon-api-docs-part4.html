@@ -1,4 +1,4 @@
-<!-- PART 4: METHOD 16 full + METHOD 17 -->
+<!-- PART 4: METHOD 16 full + METHOD 17 full -->
 
     <!-- ===== METHOD 16: STATISTICS DAILY ===== -->
     <section id="statistics-daily" class="method-section">
@@ -105,8 +105,74 @@ Content-Type: application/json</pre></div>
             <li>SKU продвигаемого товара;</li>
             <li>артикул;</li>
             <li>наименование;</li>
-            <li>источник заказа.</li>
+            <li>источник заказа;</li>
+            <li>количество;</li>
+            <li>стоимость, ₽;</li>
+            <li>ставку, %;</li>
+            <li>ставку, ₽;</li>
+            <li>расход, ₽.</li>
           </ul>
+
+          <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
+
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Начальная дата периода отчёта в формате RFC 3339.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Конечная дата периода отчёта в формате RFC 3339.</p>
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">Статистика по кампании</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">UUID</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Уникальный идентификатор отправленного запроса.<br />
+                    По нему можно <a href="#" class="link-blue">проверить статус формирования отчёта</a> и <a href="#" class="link-blue">скачать отчёт</a>.
+                  </div>
+                </div>
+                <div class="schema-row">
+                  <div class="schema-field-name">vendor</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">boolean</span><br />
+                    Если запрашивается отчёт с аналитикой внешнего трафика — <code class="inline-code pink">true</code>.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">∨</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка запроса</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">error</div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="examples-section">
@@ -122,8 +188,10 @@ Content-Type: application/json</pre></div>
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-17">{
-  "contentType": "string"
+  "UUID": "string",
+  "vendor": true
 }</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           </div>
         </div>
       </div>
