@@ -1,4 +1,4 @@
-<!-- PART 3: METHOD 15 - Статистика по расходу кампаний (full version) -->
+<!-- PART 3: METHOD 15 full + METHOD 16 -->
 
     <!-- ===== METHOD 15: STATISTICS EXPENSE ===== -->
     <section id="statistics-expense" class="method-section">
@@ -32,6 +32,7 @@
               <div class="param-type">Array of strings &lt;uint64&gt;</div>
               <p>Список идентификаторов кампаний, для которых необходимо подготовить отчёт.</p>
               <p>Если поле заполнено, в отчёте будет статистика только по указанным кампаниям. Если поле пустое, в ответе будет статистика по всем кампаниям в указанном промежутке времени.</p>
+              <p>Необязательное поле.</p>
             </div>
           </div>
 
@@ -76,27 +77,30 @@
             <div class="response-accordion open">
               <div class="response-accordion-header" onclick="toggleAccordion(this)">
                 <span class="resp-code-badge green">200</span>
-                <span class="resp-accordion-label">Статистика по продуктовым кампаниям</span>
+                <span class="resp-accordion-label">Статистика по расходу кампаний</span>
                 <span class="resp-accordion-arrow">∨</span>
               </div>
               <div class="response-accordion-body">
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
                 <div class="schema-row">
                   <div class="schema-field-name">contentType</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string</span><br />
-                    Формат отчёта.
-                  </div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Формат отчёта.</div>
                 </div>
               </div>
             </div>
-            <div class="response-accordion">
+            <div class="response-accordion open">
               <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
-                <span class="resp-accordion-arrow">›</span>
+                <span class="resp-accordion-arrow">∨</span>
                 <span class="resp-code-badge gray">default</span>
                 <span class="resp-accordion-label">Ошибка запроса</span>
               </div>
-              <div class="response-accordion-body" style="display:none;"></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">error</div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -107,7 +111,7 @@
 Host: api-performance.ozon.ru:443
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
 Content-Type: application/json</pre></div>
-          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           <h2 class="examples-title">Примеры ответа</h2>
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
           <div class="response-block">
@@ -119,4 +123,15 @@ Content-Type: application/json</pre></div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ===== METHOD 16: STATISTICS DAILY ===== -->
+    <section id="statistics-daily" class="method-section">
+      <h1 class="page-title">Дневная статистика по кампаниям</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/daily</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
     </section>
