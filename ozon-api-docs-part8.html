@@ -112,16 +112,26 @@
                 <div class="schema-row"><div class="schema-field-name">autopilot <span class="param-arrow">&rsaquo;</span></div><div class="schema-field-desc"><span class="schema-type">object (extcampaignCampaignAutopilotProperties)</span><br />Информация о кампании. Возвращается, если в параметре <code class="inline-code pink">productAutopilotStrategy</code> включена стратегия.</div></div>
                 <div class="schema-row"><div class="schema-field-name">createdAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span><br />Дата создания кампании в формате RFC3339.</div></div>
                 <div class="schema-row"><div class="schema-field-name">updatedAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span><br />Дата обновления кампании в формате RFC3339.</div></div>
-                <div class="schema-row"><div class="schema-field-name">productCampaignMode</div><div class="schema-field-desc"><span class="schema-type">string</span><br /><code class="inline-code pink">"PRODUCT_CAMPAIGN_MODE_AUTO"</code></div></div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">productCampaignMode</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    <strong>Default:</strong> <code class="inline-code pink">"PRODUCT_CAMPAIGN_MODE_AUTO"</code><br />
+                    <strong>Enum:</strong> <code class="inline-code pink">"PRODUCT_CAMPAIGN_MODE_AUTO"</code> <code class="inline-code pink">"PRODUCT_CAMPAIGN_MODE_MANUAL"</code><br />
+                    Режим создания и управления товарной рекламной кампанией:
+                    <ul class="param-list">
+                      <li><code class="inline-code pink">PRODUCT_CAMPAIGN_MODE_AUTO</code> — автоматически;</li>
+                      <li><code class="inline-code pink">PRODUCT_CAMPAIGN_MODE_MANUAL</code> — вручную.</li>
+                    </ul>
+                  </div>
+                </div>
 
               </div>
             </div>
-            <div class="response-accordion open">
-              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&or;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка</span></div>
-              <div class="response-accordion-body">
-                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
-                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div></div>
-              </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&rsaquo;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
+              <div class="response-accordion-body" style="display:none;"></div>
             </div>
           </div>
         </div>
