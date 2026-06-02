@@ -126,20 +126,46 @@
                     <span class="schema-type">string (string)</span><br />
                     <strong>Default:</strong> <code class="inline-code pink">"CAMPAIGN_TYPE_INVALID"</code><br />
                     Тип оплаты:
-                    <ul class="param-list">
-                      <li><code class="inline-code pink">CPC</code> — за клики.</li>
-                    </ul>
+                    <ul class="param-list"><li><code class="inline-code pink">CPC</code> — за клики.</li></ul>
                   </div>
                 </div>
 
                 <div class="schema-row"><div class="schema-field-name">title</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Название кампании.</div></div>
 
-                <div class="schema-row"><div class="schema-field-name">state</div><div class="schema-field-desc"><span class="schema-type">string (string)</span><br /><strong>Default:</strong> <code class="inline-code pink">"CAMPAIGN_STATE_UNKNOWN"</code></div></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">state</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string (string)</span><br />
+                    <strong>Default:</strong> <code class="inline-code pink">"CAMPAIGN_STATE_UNKNOWN"</code><br />
+                    Состояние кампании:
+                    <ul class="param-list">
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_RUNNING</code> — активная кампания;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_PLANNED</code> — кампания, сроки проведения которой ещё не наступили;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_STOPPED</code> — кампания, приостановленная из-за нехватки бюджета;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_INACTIVE</code> — кампания, остановленная владельцем;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_ARCHIVED</code> — архивная кампания;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_MODERATION_DRAFT</code> — отредактированная кампания до отправки на модерацию;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_MODERATION_IN_PROGRESS</code> — кампания, отправленная на модерацию;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_MODERATION_FAILED</code> — кампания, непрошедшая модерацию;</li>
+                      <li><code class="inline-code pink">CAMPAIGN_STATE_FINISHED</code> — кампания завершена, дата окончания в прошлом, такую кампанию нельзя изменить, можно только клонировать или создать новую.</li>
+                    </ul>
+                  </div>
+                </div>
 
-                <div class="schema-row"><div class="schema-field-name">fromDate</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
-                <div class="schema-row"><div class="schema-field-name">toDate</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
-                <div class="schema-row"><div class="schema-field-name">budget</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
-                <div class="schema-row"><div class="schema-field-name">dailyBudget</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+                <div class="schema-row"><div class="schema-field-name">fromDate</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Дата старта рекламной кампании.</div></div>
+                <div class="schema-row"><div class="schema-field-name">toDate</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Дата завершения рекламной кампании.</div></div>
+
+                <div class="schema-row"><div class="schema-field-name">budget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.</div></div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">dailyBudget</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    <span class="badge-deprecated">Deprecated</span><br />
+                    Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.
+                  </div>
+                </div>
+
                 <div class="schema-row"><div class="schema-field-name">weeklyBudget</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
                 <div class="schema-row"><div class="schema-field-name">placement</div><div class="schema-field-desc"><span class="schema-type">string</span><br /><code class="inline-code pink">"PLACEMENT_INVALID"</code></div></div>
                 <div class="schema-row"><div class="schema-field-name">productAutopilotStrategy</div><div class="schema-field-desc"><span class="schema-type">string</span><br /><code class="inline-code pink">"MAX_CLICKS"</code></div></div>
@@ -147,7 +173,6 @@
                 <div class="schema-row"><div class="schema-field-name">createdAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span></div></div>
                 <div class="schema-row"><div class="schema-field-name">updatedAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span></div></div>
                 <div class="schema-row"><div class="schema-field-name">productCampaignMode</div><div class="schema-field-desc"><span class="schema-type">string</span><br /><code class="inline-code pink">"PRODUCT_CAMPAIGN_MODE_AUTO"</code></div></div>
-
               </div>
             </div>
             <div class="response-accordion open">
