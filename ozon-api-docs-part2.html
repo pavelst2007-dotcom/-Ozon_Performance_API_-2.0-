@@ -1,0 +1,458 @@
+<!-- PART 2: continuation from METHOD 8 -->
+
+          <p class="method-description">Чтобы запросить отчёт в формате JSON, отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/attribution/json</code>.</p>
+
+          <div class="section-label">REQUEST BODY SCHEMA: application/json</div>
+          <div class="param-row">
+            <div class="param-name">campaigns<br /><span class="required-badge">required</span></div>
+            <div class="param-desc"><div class="param-type">Array of strings &lt;uint64&gt;</div>Список идентификаторов кампаний.</div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div>Начальная дата периода отчёта в формате RFC 3339.</div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div>Конечная дата периода отчёта в формате RFC 3339.</div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc"><div class="param-type">string</div>Начальная дата в формате ГГГГ-ММ-ДД.</div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc"><div class="param-type">string</div>Конечная дата в формате ГГГГ-ММ-ДД.</div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">groupBy</div>
+            <div class="param-desc">
+              <div class="param-type">string (extstatGroupBy)</div>
+              Default: <code class="inline-code pink">"NO_GROUP_BY"</code><br />
+              Enum: <code class="inline-code pink">"NO_GROUP_BY"</code> <code class="inline-code pink">"DATE"</code> <code class="inline-code pink">"START_OF_WEEK"</code> <code class="inline-code pink">"START_OF_MONTH"</code>
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">Отчёт по заказам</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">UUID</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Уникальный идентификатор запроса.</div></div>
+                <div class="schema-row"><div class="schema-field-name">vendor</div><div class="schema-field-desc"><span class="schema-type">boolean</span></div></div>
+              </div>
+            </div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">∨</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="response-tabs"><button class="resp-tab active">Payload</button><button class="resp-tab">JSON</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="request-json-8">{
+  "campaigns": ["string"],
+  "from": "2019-08-24T14:15:22Z",
+  "to": "2019-08-24T14:15:22Z",
+  "dateFrom": "string",
+  "dateTo": "string",
+  "groupBy": "NO_GROUP_BY"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-8">{
+  "UUID": "1c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
+  "vendor": false
+}</pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 9: STATISTICS UUID ===== -->
+    <section id="statistics-uuid" class="method-section">
+      <h1 class="page-title">Статус отчёта</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/{UUID}</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">Используйте метод для проверки статуса формирования отчёта и его скачивания.</p>
+          <div class="section-label">PATH PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">UUID<br /><span class="required-badge">required</span></div>
+            <div class="param-desc"><div class="param-type">string</div><p>Уникальный идентификатор запроса на формирование отчёта.</p></div>
+          </div>
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span><span class="resp-accordion-label">Статус отчёта</span><span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">UUID</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Идентификатор запроса.</div></div>
+                <div class="schema-row"><div class="schema-field-name">state</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Статус формирования отчёта: <code class="inline-code pink">OK</code>, <code class="inline-code pink">IN_PROGRESS</code>, <code class="inline-code pink">ERROR</code>.</div></div>
+                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки (если есть).</div></div>
+              </div>
+            </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
+              <div class="response-accordion-body" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-9">{
+  "UUID": "6c159c60-ab92-46d9-9a6b-d225dbf5c7b1",
+  "state": "OK",
+  "error": ""
+}</pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 10: STATISTICS LIST ===== -->
+    <section id="statistics-list" class="method-section">
+      <h1 class="page-title">Список отчётов, сгенерированных через интерфейс</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/list</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">Возвращает список отчётов, сгенерированных через интерфейс рекламного кабинета.</p>
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span><span class="resp-accordion-label">Список отчётов</span><span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row top-level"><div class="schema-field-name">reports <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div><div class="schema-field-desc"><span class="schema-type">Array of objects</span></div></div>
+                <div class="schema-array-block"><div class="schema-array-label">Array () [</div>
+                  <div class="schema-row"><div class="schema-field-name">UUID</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+                  <div class="schema-row"><div class="schema-field-name">state</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+                  <div class="schema-row"><div class="schema-field-name">createdAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span></div></div>
+                  <div class="schema-array-close">]</div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+          </div>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-10">{"reports": [{"UUID": "string","state": "OK","createdAt": "2019-08-24T14:15:22Z"}]}</pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 11: STATISTICS EXTERNALLIST ===== -->
+    <section id="statistics-externallist" class="method-section">
+      <h1 class="page-title">Список отчётов, сгенерированных через API</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/externallist</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">Возвращает список отчётов, сгенерированных через API.</p>
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Список отчётов</span><span class="resp-accordion-arrow">∨</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row top-level"><div class="schema-field-name">reports <span class="schema-toggle" onclick="toggleSchemaBlock(this)">˅</span></div><div class="schema-field-desc"><span class="schema-type">Array of objects</span></div></div>
+                <div class="schema-array-block"><div class="schema-array-label">Array () [</div>
+                  <div class="schema-row"><div class="schema-field-name">UUID</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+                  <div class="schema-row"><div class="schema-field-name">state</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+                  <div class="schema-row"><div class="schema-field-name">createdAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span></div></div>
+                  <div class="schema-array-close">]</div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+          </div>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-11">{"reports": [{"UUID": "string","state": "OK","createdAt": "2019-08-24T14:15:22Z"}]}</pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 12: STATISTICS REPORT ===== -->
+    <section id="statistics-report" class="method-section">
+      <h1 class="page-title">Получить отчёты</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/report</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">Используйте метод для скачивания готового отчёта по UUID.</p>
+          <div class="section-label">QUERY PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">UUID</div>
+            <div class="param-desc"><div class="param-type">string</div>Уникальный идентификатор запроса.</div>
+          </div>
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Отчёт</span><span class="resp-accordion-arrow">∨</span></div>
+              <div class="response-accordion-body">
+                <div class="section-label">RESPONSE HEADERS</div>
+                <div class="param-row"><div class="param-name">content-type</div><div class="param-desc"><div class="param-type">string</div>Example: <code class="inline-code pink">"text/csv; charset=UTF-8"</code></div></div>
+                <div class="param-row"><div class="param-name">x-o3-trace-id</div><div class="param-desc"><div class="param-type">string</div></div></div>
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">text/csv</span></div>
+                <div class="schema-row"><div class="schema-field-name">string</div><div class="schema-field-desc">Строки отчёта.</div></div>
+              </div>
+            </div>
+            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+          </div>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/report?UUID=6c159c60-ab92-46d9-9a6b-d225dbf5c7b1
+Host: api-performance.ozon.ru:443
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...</pre></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">text/csv</div></div>
+            <div class="code-block response-code"><pre id="response-json-12">"string"</pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 13: STATISTICS CAMPAIGN MEDIA ===== -->
+    <section id="statistics-campaign-media" class="method-section">
+      <h1 class="page-title">Статистика по медийным кампаниям</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/campaign/media</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">В запросе укажите временной промежуток с помощью полей <code class="inline-code pink">from</code> и <code class="inline-code pink">to</code> или <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>. Если заполнены все четыре поля, в ответе будет статистика по временному промежутку из полей <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>.</p>
+          <p class="method-description">Формат отчёта — CSV.</p>
+          <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте в адрес метода <code class="inline-code pink">/json</code> и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/campaign/media/json</code>.</p>
+          <p class="method-description">Отчёт содержит:</p>
+          <ul class="param-list">
+            <li>идентификатор кампании;</li>
+            <li>название кампании;</li>
+            <li>тип объекта;</li>
+            <li>статус кампании;</li>
+            <li>недельный бюджет в рублях;</li>
+            <li>бюджет в рублях;</li>
+            <li>расход в рублях;</li>
+            <li>показы;</li>
+            <li>клики;</li>
+            <li>CTR;</li>
+            <li>средняя цена клика в рублях;</li>
+            <li>заказы в штуках;</li>
+            <li>заказы в рублях.</li>
+          </ul>
+          <div class="section-label">QUERY PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">campaignIds</div>
+            <div class="param-desc">
+              <div class="param-type">Array of strings &lt;uint64&gt;</div>
+              <p>Список идентификаторов кампаний, для которых необходимо подготовить отчёт.</p>
+              <p>Если поле заполнено, в отчёте будет статистика только по указанным кампаниям. Если поле пустое, в ответе будет статистика по всем кампаниям в указанном промежутке времени.</p>
+              <p>Необязательное поле.</p>
+            </div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Начало периода в формате RFC 3339.</p></div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Конец периода в формате RFC 3339.</p></div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc"><div class="param-type">string</div><p>Начальная дата в формате ГГГГ-ММ-ДД.</p></div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc"><div class="param-type">string</div><p>Конечная дата в формате ГГГГ-ММ-ДД.</p></div>
+          </div>
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Статистика по медийным кампаниям</span><span class="resp-accordion-arrow">∨</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">contentType</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+              </div>
+            </div>
+            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+          </div>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/campaign/media?dateFrom=2024-08-01&amp;dateTo=...
+Host: api-performance.ozon.ru:443
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
+Content-Type: application/json</pre></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-13">{
+  "contentType": "string"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 14: STATISTICS CAMPAIGN PRODUCT ===== -->
+    <section id="statistics-campaign-product" class="method-section">
+      <h1 class="page-title">Статистика по кампании Оплата за клик</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/campaign/product</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">В запросе укажите временной промежуток с помощью полей <code class="inline-code pink">from</code> и <code class="inline-code pink">to</code> или <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>. Если заполнены все четыре поля, в ответе будет статистика по временному промежутку из полей <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>.</p>
+          <p class="method-description">Формат отчёта — CSV.</p>
+          <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте в адрес метода <code class="inline-code pink">/json</code> и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/campaign/product/json</code>.</p>
+          <p class="method-description">Отчёт содержит:</p>
+          <ul class="param-list">
+            <li>идентификатор кампании;</li>
+            <li>название кампании;</li>
+            <li>тип объекта;</li>
+            <li>статус кампании;</li>
+            <li>недельный бюджет в рублях;</li>
+            <li>бюджет в рублях;</li>
+            <li>расход в рублях;</li>
+            <li>показы;</li>
+            <li>клики;</li>
+            <li>количество добавлений товара в корзину;</li>
+            <li>отношение числа кликов к числу показов (CTR);</li>
+            <li>средняя цена клика в рублях;</li>
+            <li>заказы в штуках;</li>
+            <li>заказы в рублях;</li>
+            <li>доля рекламных расходов (ДРР);</li>
+            <li>тип продвижения;</li>
+            <li>места размещения для спецразмещения.</li>
+          </ul>
+
+          <div class="section-label">QUERY PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">campaignIds</div>
+            <div class="param-desc">
+              <div class="param-type">Array of strings &lt;uint64&gt;</div>
+              <p>Список идентификаторов кампаний, для которых необходимо подготовить отчёт.</p>
+              <p>Если поле заполнено, в отчёте будет статистика только по указанным кампаниям. Если поле пустое, в ответе будет статистика по всем кампаниям в указанном промежутке времени.</p>
+              <p>Необязательное поле.</p>
+            </div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Начало периода в формате RFC 3339.</p></div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Конец периода в формате RFC 3339.</p></div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Начальная дата в формате ГГГГ-ММ-ДД.</p></div>
+          </div>
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Конечная дата в формате ГГГГ-ММ-ДД.</p></div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Статистика по кампании Оплата за клик</span><span class="resp-accordion-arrow">∨</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">contentType</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
+              </div>
+            </div>
+            <div class="response-accordion"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">›</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body" style="display:none;"></div></div>
+          </div>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/campaign/product?dateFrom=2024-08-01&amp;dateTo=...
+Host: api-performance.ozon.ru:443
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
+Content-Type: application/json</pre></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-14">{
+  "contentType": "string"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="ozon-api-docs.js"></script>
+</body>
+</html>
