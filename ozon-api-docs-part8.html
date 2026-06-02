@@ -1,0 +1,35 @@
+<!-- PART 8: METHOD 24 productCampaignMode final + METHOD 25 Выключить кампанию -->
+
+    <!-- ===== METHOD 24 productCampaignMode (финал) продолжение part7 ===== -->
+    <!-- Поле productCampaignMode уже добавлено в part7. Здесь дополняем описанием enum. -->
+    <!-- NOTE: productCampaignMode schema-row в part7 дополнить описанием ниже при сборке -->
+
+    <!-- ===== METHOD 25: DEACTIVATE CAMPAIGN ===== -->
+    <section id="campaign-deactivate" class="method-section">
+      <h1 class="page-title">Выключить кампанию</h1>
+      <div class="method-line">
+        <span class="method-badge post large">POST</span>
+        <code class="endpoint-url">/api/client/campaign/{campaignId}/deactivate</code>
+        <button class="btn-copy" title="Копировать">⊙</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <div class="section-label">PATH PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">campaignId <span class="param-required">required</span></div>
+            <div class="param-desc"><div class="param-type">string &lt;uint64&gt;</div><p>Идентификатор кампании.</p></div>
+          </div>
+          <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
+          <div class="param-row"><div class="param-name"></div><div class="param-desc"><div class="param-type">object (Empty)</div></div></div>
+        </div>
+
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="resp-meta-tabs"><button class="resp-meta-tab active">Payload</button><button class="resp-meta-tab">JSON</button></div>
+          <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+          <div class="code-block request-block"><pre>{ }</pre></div>
+          <div class="copy-link"><span class="copy-icon">⊙</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть все</span></div>
+        </div>
+      </div>
+    </section>
