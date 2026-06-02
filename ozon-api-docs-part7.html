@@ -1,11 +1,5 @@
-<!-- PART 7: METHOD 22 responses finalized + METHOD 23 -->
+<!-- PART 7: METHOD 23 - Рассчитать минимальный бюджет кампании (Deprecated) -->
 
-    <!-- ===== METHOD 22 RESPONSES (finalized) ===== -->
-    <!-- Note: METHOD 22 responses were already in part6, this part adds the correct campaignId type detail -->
-    <!-- campaignId: string <uint64> - Идентификатор кампании -->
-    <!-- default: Ошибка запроса / error: string / Описание ошибки -->
-
-    <!-- ===== METHOD 23: DYNAMIC BUDGET (DEPRECATED) ===== -->
     <section id="dynamic-budget" class="method-section">
       <h1 class="page-title">Рассчитать минимальный бюджет кампании <span class="badge-deprecated">Deprecated</span></h1>
       <div class="method-line">
@@ -19,13 +13,114 @@
           <div class="notice-block notice-block--warning">
             1 сентября 2025 года метод будет отключён. Теперь минимальный бюджет рассчитывается по формуле: <strong>2 000 рублей × 1 SKU</strong>.
           </div>
+
           <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
+
+          <div class="param-row">
+            <div class="param-name">createCampaign <span class="param-arrow">&rsaquo;</span></div>
+            <div class="param-desc">
+              <div class="param-type">object (object)</div>
+              <p>Параметры для расчёта при создании кампании.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">updateCampaign <span class="param-arrow">&rsaquo;</span></div>
+            <div class="param-desc">
+              <div class="param-type">object (object)</div>
+              <p>Параметры для расчёта при обновлении кампании.</p>
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Результат запроса</span><span class="resp-accordion-arrow">∨</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">campaignBudget</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">dynamicBudget</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    Минимальный бюджет.
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">dynamicBudgetType</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string (string)</span><br />
+                    <strong>Default:</strong> <code class="inline-code pink">"DYNAMIC_BUDGET_REQUIRED"</code><br />
+                    <strong>Enum:</strong> <code class="inline-code pink">"DYNAMIC_BUDGET_REQUIRED"</code> <code class="inline-code pink">"DYNAMIC_BUDGET_RECOMMENDED"</code><br />
+                    Тип минимального бюджета:
+                    <ul class="param-list">
+                      <li><code class="inline-code pink">DYNAMIC_BUDGET_REQUIRED</code> — обязательный;</li>
+                      <li><code class="inline-code pink">DYNAMIC_BUDGET_RECOMMENDED</code> — рекомендованный.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="schema-row">
+                  <div class="schema-field-name">skuPrice</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string &lt;uint64&gt;</span><br />
+                    Сумма в рублях, на которую увеличивается минимальный бюджет на каждый SKU.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">∨</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div></div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="examples-section">
           <h2 class="examples-title">Примеры запроса</h2>
           <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
           <div class="code-block request-block"><pre>{
+  "createCampaign": {
+    "autopilotStrategy": "NO_AUTO_STRATEGY",
+    "placement": "CAMPAIGN_PLACEMENT_INVALID",
+    "skusCount": "string"
+  },
+  "updateCampaign": {
+    "addingSkus": [
+      "string"
+    ],
+    "autopilotStrategy": {
+      "strategy": "NO_AUTO_STRATEGY"
+    },
+    "campaignId": "string"
+  }
 }</pre></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-23">{
+  "campaignBudget": "string",
+  "dynamicBudget": "string",
+  "dynamicBudgetType": "DYNAMIC_BUDGET_REQUIRED",
+  "skuPrice": "string"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть все</span></div>
+          </div>
         </div>
       </div>
     </section>
