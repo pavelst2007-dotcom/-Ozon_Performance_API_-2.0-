@@ -9,5 +9,91 @@
         <button class="btn-copy" title="Копировать">&#10825;</button>
       </div>
       <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
-      <!-- Продолжение будет добавлено в следующих частях -->
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">Метод для изменения параметров кампании.</p>
+
+          <div class="section-label">PATH PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">campaignId <span class="param-required">required</span></div>
+            <div class="param-desc"><div class="param-type">string &lt;uint64&gt;</div><p>Идентификатор кампании.</p></div>
+          </div>
+
+          <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
+
+          <div class="schema-row">
+            <div class="schema-field-name">autopilot <span class="param-arrow">&rsaquo;</span></div>
+            <div class="schema-field-desc">
+              <span class="schema-type">object (extcampaignPatchProductCampaignAutopilotProperties)</span><br />
+              Информация о кампании. Обязательный параметр, если в параметре <code class="inline-code pink">productAutopilotStrategy</code> включена автостратегия.
+            </div>
+          </div>
+
+          <div class="schema-row">
+            <div class="schema-field-name">fromDate</div>
+            <div class="schema-field-desc">
+              <span class="schema-type">string</span><br />
+              Дата начала рекламной кампании по московскому времени.<br />
+              Не может быть раньше текущей даты.
+            </div>
+          </div>
+
+          <div class="schema-row">
+            <div class="schema-field-name">toDate</div>
+            <div class="schema-field-desc">
+              <span class="schema-type">string</span><br />
+              Дата окончания рекламной кампании по московскому времени.<br />
+              Не может быть раньше даты начала.
+            </div>
+          </div>
+
+          <div class="schema-row">
+            <div class="schema-field-name">budget</div>
+            <div class="schema-field-desc">
+              <span class="schema-type">string &lt;uint64&gt;</span><br />
+              Ограничение общего бюджета рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.<br />
+              Учитывается только для автоматических кампаний брендов и агентств. В других случаях параметр игнорируется.
+            </div>
+          </div>
+
+          <div class="schema-row">
+            <div class="schema-field-name">dailyBudget</div>
+            <div class="schema-field-desc">
+              <span class="schema-type">string &lt;uint64&gt;</span><br />
+              <span class="badge-deprecated">Deprecated</span><br />
+              Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.
+            </div>
+          </div>
+
+          <div class="schema-row">
+            <div class="schema-field-name">weeklyBudget</div>
+            <div class="schema-field-desc">
+              <span class="schema-type">string &lt;uint64&gt;</span><br />
+              Недельный бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="resp-meta-tabs"><button class="resp-meta-tab active">Payload</button><button class="resp-meta-tab">JSON</button></div>
+          <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+          <div class="code-block request-block"><pre id="request-json-26">{
+  "autopilot": {
+    "categoryId": "string",
+    "skuAddMode": "PRODUCT_CAMPAIGN_SKU_ADD_MODE_UNKNOWN"
+  },
+  "fromDate": "string",
+  "toDate": "string",
+  "budget": "string",
+  "dailyBudget": "string",
+  "weeklyBudget": "string"
+}</pre></div>
+          <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <!-- Ответы будут добавлены в следующей части -->
+        </div>
+      </div>
     </section>
