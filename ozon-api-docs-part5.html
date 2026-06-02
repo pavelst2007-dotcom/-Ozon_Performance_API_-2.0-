@@ -1,4 +1,4 @@
-<!-- PART 5: METHOD 18 full - Получить отчёт по товарам в оплате за заказ — выбранные товары -->
+<!-- PART 5: METHOD 18 full + METHOD 19 -->
 
     <!-- ===== METHOD 18: STATISTIC PRODUCTS GENERATE ===== -->
     <section id="statistic-products-generate" class="method-section">
@@ -35,69 +35,34 @@
             <li>ДРР, %;</li>
             <li>последнее изменение.</li>
           </ul>
-
           <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
-
           <div class="param-row">
             <div class="param-name">from</div>
-            <div class="param-desc">
-              <div class="param-type">string &lt;date-time&gt;</div>
-              <p>Начальная дата периода отчёта в формате RFC 3339.</p>
-            </div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Начальная дата периода отчёта в формате RFC 3339.</p></div>
           </div>
-
           <div class="param-row">
             <div class="param-name">to</div>
-            <div class="param-desc">
-              <div class="param-type">string &lt;date-time&gt;</div>
-              <p>Конечная дата периода отчёта в формате RFC 3339.</p>
-            </div>
+            <div class="param-desc"><div class="param-type">string &lt;date-time&gt;</div><p>Конечная дата периода отчёта в формате RFC 3339.</p></div>
           </div>
-
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
             <div class="response-accordion open">
-              <div class="response-accordion-header" onclick="toggleAccordion(this)">
-                <span class="resp-code-badge green">200</span>
-                <span class="resp-accordion-label">Статистика по кампании</span>
-                <span class="resp-accordion-arrow">∨</span>
-              </div>
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Статистика по кампании</span><span class="resp-accordion-arrow">∨</span></div>
               <div class="response-accordion-body">
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
-                <div class="schema-row">
-                  <div class="schema-field-name">UUID</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string</span><br />
-                    Уникальный идентификатор отправленного запроса.<br />
-                    По нему можно <a href="#" class="link-blue">проверить статус формирования отчёта</a> и <a href="#" class="link-blue">скачать отчёт</a>.
-                  </div>
-                </div>
-                <div class="schema-row">
-                  <div class="schema-field-name">vendor</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">boolean</span><br />
-                    Если запрашивается отчёт с аналитикой внешнего трафика — <code class="inline-code pink">true</code>.
-                  </div>
-                </div>
+                <div class="schema-row"><div class="schema-field-name">UUID</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Уникальный идентификатор отправленного запроса.<br />По нему можно <a href="#" class="link-blue">проверить статус формирования отчёта</a> и <a href="#" class="link-blue">скачать отчёт</a>.</div></div>
+                <div class="schema-row"><div class="schema-field-name">vendor</div><div class="schema-field-desc"><span class="schema-type">boolean</span><br />Если запрашивается отчёт с аналитикой внешнего трафика — <code class="inline-code pink">true</code>.</div></div>
               </div>
             </div>
             <div class="response-accordion open">
-              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
-                <span class="resp-accordion-arrow">∨</span>
-                <span class="resp-code-badge gray">default</span>
-                <span class="resp-accordion-label">Ошибка запроса</span>
-              </div>
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">∨</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
               <div class="response-accordion-body">
                 <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
-                <div class="schema-row">
-                  <div class="schema-field-name">error</div>
-                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
-                </div>
+                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div></div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="examples-section">
           <h2 class="examples-title">Примеры запроса</h2>
           <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
@@ -111,6 +76,35 @@
           <div class="response-block">
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-18">{
+  "UUID": "string",
+  "vendor": true
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 19: ALL SKU PROMO ORDERS GENERATE ===== -->
+    <section id="all-sku-promo-orders-generate" class="method-section">
+      <h1 class="page-title">Получить отчёт по заказам в оплате за заказ — все товары</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/all_sku_promo/orders/generate</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">В параметрах запроса <code class="inline-code pink">timeBounds.from</code> и <code class="inline-code pink">timeBounds.to</code> укажите промежуток времени.</p>
+          <p class="method-description">Performance API асинхронный. Поэтому в результате запроса будет не сам отчёт, а уникальный идентификатор отправленного запроса, с помощью которого можно <a href="#" class="link-blue">проверить статус формирования отчёта</a> и <a href="#" class="link-blue">скачать отчёт в формате CSV</a>.</p>
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-19">{
   "UUID": "string",
   "vendor": true
 }</pre></div>
