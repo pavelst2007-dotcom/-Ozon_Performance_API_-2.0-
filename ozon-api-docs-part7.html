@@ -11,31 +11,14 @@
       <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
       <div class="tab-content">
         <div class="params-section">
-          <div class="notice-block notice-block--warning">
-            1 сентября 2025 года метод будет отключён. Теперь минимальный бюджет рассчитывается по формуле: <strong>2 000 рублей × 1 SKU</strong>.
-          </div>
+          <div class="notice-block notice-block--warning">1 сентября 2025 года метод будет отключён. Теперь минимальный бюджет рассчитывается по формуле: <strong>2 000 рублей × 1 SKU</strong>.</div>
           <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
           <div class="param-row"><div class="param-name">createCampaign <span class="param-arrow">&rsaquo;</span></div><div class="param-desc"><div class="param-type">object (object)</div><p>Параметры для расчёта при создании кампании.</p></div></div>
           <div class="param-row"><div class="param-name">updateCampaign <span class="param-arrow">&rsaquo;</span></div><div class="param-desc"><div class="param-type">object (object)</div><p>Параметры для расчёта при обновлении кампании.</p></div></div>
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
-            <div class="response-accordion open">
-              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Результат запроса</span><span class="resp-accordion-arrow">∨</span></div>
-              <div class="response-accordion-body">
-                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
-                <div class="schema-row"><div class="schema-field-name">campaignBudget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.</div></div>
-                <div class="schema-row"><div class="schema-field-name">dynamicBudget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Минимальный бюджет.</div></div>
-                <div class="schema-row"><div class="schema-field-name">dynamicBudgetType</div><div class="schema-field-desc"><span class="schema-type">string (string)</span><br /><strong>Default:</strong> <code class="inline-code pink">"DYNAMIC_BUDGET_REQUIRED"</code><br /><strong>Enum:</strong> <code class="inline-code pink">"DYNAMIC_BUDGET_REQUIRED"</code> <code class="inline-code pink">"DYNAMIC_BUDGET_RECOMMENDED"</code><br />Тип минимального бюджета:<ul class="param-list"><li><code class="inline-code pink">DYNAMIC_BUDGET_REQUIRED</code> — обязательный;</li><li><code class="inline-code pink">DYNAMIC_BUDGET_RECOMMENDED</code> — рекомендованный.</li></ul></div></div>
-                <div class="schema-row"><div class="schema-field-name">skuPrice</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Сумма в рублях, на которую увеличивается минимальный бюджет за каждый добавленный в кампанию товар.</div></div>
-              </div>
-            </div>
-            <div class="response-accordion open">
-              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">∨</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
-              <div class="response-accordion-body">
-                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
-                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div></div>
-              </div>
-            </div>
+            <div class="response-accordion open"><div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Результат запроса</span><span class="resp-accordion-arrow">∨</span></div><div class="response-accordion-body"><div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div><div class="schema-row"><div class="schema-field-name">campaignBudget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.</div></div><div class="schema-row"><div class="schema-field-name">dynamicBudget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Минимальный бюджет.</div></div><div class="schema-row"><div class="schema-field-name">dynamicBudgetType</div><div class="schema-field-desc"><span class="schema-type">string (string)</span><br /><strong>Default:</strong> <code class="inline-code pink">"DYNAMIC_BUDGET_REQUIRED"</code><br /><strong>Enum:</strong> <code class="inline-code pink">"DYNAMIC_BUDGET_REQUIRED"</code> <code class="inline-code pink">"DYNAMIC_BUDGET_RECOMMENDED"</code><br />Тип минимального бюджета:<ul class="param-list"><li><code class="inline-code pink">DYNAMIC_BUDGET_REQUIRED</code> — обязательный;</li><li><code class="inline-code pink">DYNAMIC_BUDGET_RECOMMENDED</code> — рекомендованный.</li></ul></div></div><div class="schema-row"><div class="schema-field-name">skuPrice</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Сумма в рублях, на которую увеличивается минимальный бюджет за каждый добавленный в кампанию товар.</div></div></div></div>
+            <div class="response-accordion open"><div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">∨</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div><div class="response-accordion-body"><div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div><div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div></div></div></div>
           </div>
         </div>
         <div class="examples-section">
@@ -60,16 +43,12 @@
           <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
           <h2 class="examples-title">Примеры ответа</h2>
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
-          <div class="response-block">
-            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
-            <div class="code-block response-code"><pre id="response-json-23">{
+          <div class="response-block"><div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div><div class="code-block response-code"><pre id="response-json-23">{
   "campaignBudget": "string",
   "dynamicBudget": "string",
   "dynamicBudgetType": "DYNAMIC_BUDGET_REQUIRED",
   "skuPrice": "string"
-}</pre></div>
-            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть все</span></div>
-          </div>
+}</pre></div><div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть все</span></div></div>
         </div>
       </div>
     </section>
@@ -86,10 +65,7 @@
       <div class="tab-content">
         <div class="params-section">
           <div class="section-label">PATH PARAMETERS</div>
-          <div class="param-row">
-            <div class="param-name">campaignId <span class="param-required">required</span></div>
-            <div class="param-desc"><div class="param-type">string &lt;uint64&gt;</div><p>Идентификатор кампании.</p></div>
-          </div>
+          <div class="param-row"><div class="param-name">campaignId <span class="param-required">required</span></div><div class="param-desc"><div class="param-type">string &lt;uint64&gt;</div><p>Идентификатор кампании.</p></div></div>
           <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
           <div class="param-row"><div class="param-name"></div><div class="param-desc"><div class="param-type">object (Empty)</div></div></div>
 
@@ -102,33 +78,11 @@
 
                 <div class="schema-row"><div class="schema-field-name">id</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор кампании.</div></div>
 
-                <div class="schema-row">
-                  <div class="schema-field-name">autostopStatus</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string (advcamptypeAutostopStatus)</span><br />
-                    <strong>Default:</strong> <code class="inline-code pink">"AUTOSTOP_STATUS_NONE"</code><br />
-                    <strong>Enum:</strong> <code class="inline-code pink">"AUTOSTOP_STATUS_NONE"</code> <code class="inline-code pink">"AUTOSTOP_STATUS_ENABLED"</code> <code class="inline-code pink">"AUTOSTOP_STATUS_DISABLED"</code> <code class="inline-code pink">"AUTOSTOP_STATUS_STOPPED"</code><br />
-                    Статус кампании:
-                    <ul class="param-list">
-                      <li><code class="inline-code pink">AUTOSTOP_STATUS_NONE</code> — продавец создал кампанию вручную;</li>
-                      <li><code class="inline-code pink">AUTOSTOP_STATUS_ENABLED</code> — кампания создана автоматически и остановится, когда кончатся баллы;</li>
-                      <li><code class="inline-code pink">AUTOSTOP_STATUS_DISABLED</code> — кампания создана автоматически, но она не остановится, когда кончатся баллы;</li>
-                      <li><code class="inline-code pink">AUTOSTOP_STATUS_STOPPED</code> — баллы закончились, кампания остановлена автоматически.</li>
-                    </ul>
-                  </div>
-                </div>
+                <div class="schema-row"><div class="schema-field-name">autostopStatus</div><div class="schema-field-desc"><span class="schema-type">string (advcamptypeAutostopStatus)</span><br /><strong>Default:</strong> <code class="inline-code pink">"AUTOSTOP_STATUS_NONE"</code><br /><strong>Enum:</strong> <code class="inline-code pink">"AUTOSTOP_STATUS_NONE"</code> <code class="inline-code pink">"AUTOSTOP_STATUS_ENABLED"</code> <code class="inline-code pink">"AUTOSTOP_STATUS_DISABLED"</code> <code class="inline-code pink">"AUTOSTOP_STATUS_STOPPED"</code><br />Статус кампании:<ul class="param-list"><li><code class="inline-code pink">AUTOSTOP_STATUS_NONE</code> — продавец создал кампанию вручную;</li><li><code class="inline-code pink">AUTOSTOP_STATUS_ENABLED</code> — кампания создана автоматически и остановится, когда кончатся баллы;</li><li><code class="inline-code pink">AUTOSTOP_STATUS_DISABLED</code> — кампания создана автоматически, но она не остановится, когда кончатся баллы;</li><li><code class="inline-code pink">AUTOSTOP_STATUS_STOPPED</code> — баллы закончились, кампания остановлена автоматически.</li></ul></div></div>
 
                 <div class="schema-row"><div class="schema-field-name">isAutocreated</div><div class="schema-field-desc"><span class="schema-type">boolean</span><br /><code class="inline-code pink">true</code>, если кампания создана автоматически.</div></div>
 
-                <div class="schema-row">
-                  <div class="schema-field-name">paymentType</div>
-                  <div class="schema-field-desc">
-                    <span class="schema-type">string (string)</span><br />
-                    <strong>Default:</strong> <code class="inline-code pink">"CAMPAIGN_TYPE_INVALID"</code><br />
-                    Тип оплаты:
-                    <ul class="param-list"><li><code class="inline-code pink">CPC</code> — за клики.</li></ul>
-                  </div>
-                </div>
+                <div class="schema-row"><div class="schema-field-name">paymentType</div><div class="schema-field-desc"><span class="schema-type">string (string)</span><br /><strong>Default:</strong> <code class="inline-code pink">"CAMPAIGN_TYPE_INVALID"</code><br />Тип оплаты:<ul class="param-list"><li><code class="inline-code pink">CPC</code> — за клики.</li></ul></div></div>
 
                 <div class="schema-row"><div class="schema-field-name">title</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Название кампании.</div></div>
 
@@ -157,22 +111,49 @@
 
                 <div class="schema-row"><div class="schema-field-name">budget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.</div></div>
 
+                <div class="schema-row"><div class="schema-field-name">dailyBudget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br /><span class="badge-deprecated">Deprecated</span><br />Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.</div></div>
+
+                <div class="schema-row"><div class="schema-field-name">weeklyBudget</div><div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Недельный бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.</div></div>
+
                 <div class="schema-row">
-                  <div class="schema-field-name">dailyBudget</div>
+                  <div class="schema-field-name">placement</div>
                   <div class="schema-field-desc">
-                    <span class="schema-type">string &lt;uint64&gt;</span><br />
-                    <span class="badge-deprecated">Deprecated</span><br />
-                    Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1 000 000</code> в параметре равно 1 рублю.
+                    <span class="schema-type">string (extcampaignProductCampaignPlacement)</span><br />
+                    <strong>Default:</strong> <code class="inline-code pink">"PLACEMENT_INVALID"</code><br />
+                    <strong>Enum:</strong> <code class="inline-code pink">"PLACEMENT_INVALID"</code> <code class="inline-code pink">"PLACEMENT_PDP"</code> <code class="inline-code pink">"PLACEMENT_SEARCH_AND_CATEGORY"</code> <code class="inline-code pink">"PLACEMENT_TOP_PROMOTION"</code> <code class="inline-code pink">"PLACEMENT_OVERTOP"</code><br />
+                    Место размещения продвигаемых товаров:
+                    <ul class="param-list">
+                      <li><code class="inline-code pink">PLACEMENT_INVALID</code> — не определено;</li>
+                      <li><code class="inline-code pink">PLACEMENT_PDP</code> — карточка товара. Доступно только для кампаний с ручным управлением;</li>
+                      <li><code class="inline-code pink">PLACEMENT_SEARCH_AND_CATEGORY</code> — поиск и рекомендации;</li>
+                      <li><code class="inline-code pink">PLACEMENT_TOP_PROMOTION</code> — поиск;</li>
+                      <li><code class="inline-code pink">PLACEMENT_OVERTOP</code> — поиск.</li>
+                    </ul>
                   </div>
                 </div>
 
-                <div class="schema-row"><div class="schema-field-name">weeklyBudget</div><div class="schema-field-desc"><span class="schema-type">string</span></div></div>
-                <div class="schema-row"><div class="schema-field-name">placement</div><div class="schema-field-desc"><span class="schema-type">string</span><br /><code class="inline-code pink">"PLACEMENT_INVALID"</code></div></div>
-                <div class="schema-row"><div class="schema-field-name">productAutopilotStrategy</div><div class="schema-field-desc"><span class="schema-type">string</span><br /><code class="inline-code pink">"MAX_CLICKS"</code></div></div>
-                <div class="schema-row"><div class="schema-field-name">autopilot</div><div class="schema-field-desc"><span class="schema-type">object</span><br /><code class="inline-code pink">categoryId</code>: string, <code class="inline-code pink">skuAddMode</code>: <code class="inline-code pink">"PRODUCT_CAMPAIGN_SKU_ADD_MODE_UNKNOWN"</code></div></div>
-                <div class="schema-row"><div class="schema-field-name">createdAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span></div></div>
-                <div class="schema-row"><div class="schema-field-name">updatedAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span></div></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">productAutopilotStrategy</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    <strong>Enum:</strong> <code class="inline-code pink">"MAX_CLICKS"</code> <code class="inline-code pink">"TOP_MAX_CLICKS"</code> <code class="inline-code pink">"TARGET_BIDS"</code> <code class="inline-code pink">"TOP_PROMOTION"</code> <code class="inline-code pink">"TARGET_CIR"</code><br />
+                    Стратегия, которая используется для кампании:
+                    <ul class="param-list">
+                      <li><code class="inline-code pink">MAX_CLICKS</code> — автостратегия для Поиска и рекомендаций;</li>
+                      <li><code class="inline-code pink">TOP_MAX_CLICKS</code> — автостратегия для Поиска;</li>
+                      <li><code class="inline-code pink">TARGET_BIDS</code> — средняя стоимость клика для Поиска и рекомендаций;</li>
+                      <li><code class="inline-code pink">TOP_PROMOTION</code> — вывод в топ;</li>
+                      <li><code class="inline-code pink">TARGET_CIR</code> — целевой расход.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="schema-row"><div class="schema-field-name">autopilot <span class="param-arrow">&rsaquo;</span></div><div class="schema-field-desc"><span class="schema-type">object (extcampaignCampaignAutopilotProperties)</span><br />Информация о кампании. Возвращается, если в параметре <code class="inline-code pink">productAutopilotStrategy</code> включена стратегия.</div></div>
+
+                <div class="schema-row"><div class="schema-field-name">createdAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span><br />Дата создания кампании в формате RFC3339.</div></div>
+                <div class="schema-row"><div class="schema-field-name">updatedAt</div><div class="schema-field-desc"><span class="schema-type">string &lt;date-time&gt;</span><br />Дата обновления кампании в формате RFC3339.</div></div>
                 <div class="schema-row"><div class="schema-field-name">productCampaignMode</div><div class="schema-field-desc"><span class="schema-type">string</span><br /><code class="inline-code pink">"PRODUCT_CAMPAIGN_MODE_AUTO"</code></div></div>
+
               </div>
             </div>
             <div class="response-accordion open">
