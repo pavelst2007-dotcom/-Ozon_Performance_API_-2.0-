@@ -1,0 +1,49 @@
+<!-- PART 6: METHOD 21 - Отчёт по поисковым запросам -->
+
+    <!-- ===== METHOD 21: STATISTICS PHRASES ===== -->
+    <section id="statistics-phrases" class="method-section">
+      <h1 class="page-title">Отчёт по поисковым запросам</h1>
+      <div class="method-line">
+        <span class="method-badge post large">POST</span>
+        <code class="endpoint-url">/api/client/statistics/phrases</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <div class="testing-badge">Метод находится на стадии тестирования.</div>
+          <p class="method-description">Отчёт можно сформировать только для кампаний с оплатой за клик с признаком <code class="inline-code pink">placement = PLACEMENT_TOP_PROMOTION</code>.</p>
+          <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте <code class="inline-code pink">/json</code> в адрес метода и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/phrases/json</code>.</p>
+
+          <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
+
+          <div class="param-row">
+            <div class="param-name">campaigns</div>
+            <div class="param-desc">
+              <div class="param-type">Array of strings</div>
+              <p>Список идентификаторов кампаний.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Начальная дата периода отчёта.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+          <div class="code-block request-block"><pre>{
+  "campaigns": [
+    "string"
+  ],
+  "dateFrom": "string"
+}</pre></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+        </div>
+      </div>
+    </section>
