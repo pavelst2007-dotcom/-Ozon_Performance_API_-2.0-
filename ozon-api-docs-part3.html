@@ -1,0 +1,114 @@
+<!-- PART 3: METHOD 15 - Статистика по расходу кампаний -->
+
+    <!-- ===== METHOD 15: STATISTICS EXPENSE ===== -->
+    <section id="statistics-expense" class="method-section">
+      <h1 class="page-title">Статистика по расходу кампаний</h1>
+      <div class="method-line">
+        <span class="method-badge get large">GET</span>
+        <code class="endpoint-url">/api/client/statistics/expense</code>
+        <button class="btn-copy" title="Копировать">⧉</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">В запросе укажите временной промежуток с помощью полей <code class="inline-code pink">from</code> и <code class="inline-code pink">to</code> или <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>. Если заполнены все четыре поля, в ответе будет статистика по временному промежутку из полей <code class="inline-code pink">dateFrom</code> и <code class="inline-code pink">dateTo</code>.</p>
+          <p class="method-description">Формат отчёта — CSV.</p>
+          <p class="method-description">Чтобы запросить отчёт в формате JSON, добавьте в адрес метода <code class="inline-code pink">/json</code> и отправьте запрос по адресу <code class="inline-code pink">/api/client/statistics/expense/json</code>.</p>
+
+          <div class="section-label">QUERY PARAMETERS</div>
+
+          <div class="param-row">
+            <div class="param-name">campaignIds</div>
+            <div class="param-desc">
+              <div class="param-type">Array of strings &lt;uint64&gt;</div>
+              <p>Список идентификаторов кампаний, для которых необходимо подготовить отчёт.</p>
+              <p>Если поле заполнено, в отчёте будет статистика только по указанным кампаниям. Если поле пустое, в ответе будет статистика по всем кампаниям в указанном промежутке времени.</p>
+              <p>Необязательное поле.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Начальная дата периода отчёта в формате RFC3339.</p>
+              <p>Необязательное поле.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Конечная дата периода отчёта в формате RFC3339.</p>
+              <p>Необязательное поле.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">dateFrom</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Начальная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
+              <p>Необязательное поле.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Начальная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
+              <p>Необязательное поле.</p>
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)">
+                <span class="resp-code-badge green">200</span>
+                <span class="resp-accordion-label">Статистика по продуктовым кампаниям</span>
+                <span class="resp-accordion-arrow">∨</span>
+              </div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">contentType</div>
+                  <div class="schema-field-desc">
+                    <span class="schema-type">string</span><br />
+                    Формат отчёта.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)">
+                <span class="resp-accordion-arrow">›</span>
+                <span class="resp-code-badge gray">default</span>
+                <span class="resp-accordion-label">Ошибка запроса</span>
+              </div>
+              <div class="response-accordion-body" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="code-block request-block"><pre><span class="http-method">GET</span> /api/client/statistics/expense?dateFrom=2024-08-01&amp;dateTo=2024-08-31
+Host: api-performance.ozon.ru:443
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.WyJFTWhVVU...
+Content-Type: application/json</pre></div>
+          <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-15">{
+  "contentType": "string"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
