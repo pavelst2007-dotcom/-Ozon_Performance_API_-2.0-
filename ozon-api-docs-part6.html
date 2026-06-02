@@ -20,8 +20,8 @@
           <div class="param-row">
             <div class="param-name">campaigns</div>
             <div class="param-desc">
-              <div class="param-type">Array of strings</div>
-              <p>Список идентификаторов кампаний.</p>
+              <div class="param-type">Array of strings &lt;uint64&gt;</div>
+              <p>Список кампаний.</p>
             </div>
           </div>
 
@@ -29,11 +29,69 @@
             <div class="param-name">dateFrom</div>
             <div class="param-desc">
               <div class="param-type">string</div>
-              <p>Начальная дата периода отчёта.</p>
+              <p>Начальная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>. Дата не может быть раньше 1 февраля 2025 года.</p>
             </div>
           </div>
 
+          <div class="param-row">
+            <div class="param-name">dateTo</div>
+            <div class="param-desc">
+              <div class="param-type">string</div>
+              <p>Конечная дата периода отчёта в формате ГГГГ-ММ-ДД. Например: <code class="inline-code pink">2019-02-10</code>.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">from</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Начальная дата периода отчёта в формате RFC 3339. Дата не может быть раньше 1 февраля 2025 года.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">to</div>
+            <div class="param-desc">
+              <div class="param-type">string &lt;date-time&gt;</div>
+              <p>Конечная дата периода отчёта в формате RFC 3339.</p>
+            </div>
+          </div>
+
+          <div class="param-row">
+            <div class="param-name">groupBy</div>
+            <div class="param-desc">
+              <div class="param-type">string (extstatisticsGroupBy)</div>
+              <p><strong>Default:</strong> <code class="inline-code pink">"NO_GROUP_BY"</code></p>
+              <p><strong>Enum:</strong> <code class="inline-code pink">"NO_GROUP_BY"</code> <code class="inline-code pink">"DATE"</code> <code class="inline-code pink">"START_OF_WEEK"</code> <code class="inline-code pink">"START_OF_MONTH"</code></p>
+              <p>Тип группировки по времени:</p>
+              <ul class="param-list">
+                <li><code class="inline-code pink">DATE</code> — группировка по дате (по дням);</li>
+                <li><code class="inline-code pink">START_OF_WEEK</code> — группировка по неделям;</li>
+                <li><code class="inline-code pink">START_OF_MONTH</code> — группировка по месяцам.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Отчёт по поисковым запросам</span><span class="resp-accordion-arrow">∨</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">UUID</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Уникальный идентификатор отправленного запроса.</div></div>
+                <div class="schema-row"><div class="schema-field-name">vendor</div><div class="schema-field-desc"><span class="schema-type">boolean</span><br />Если запрашивается отчёт с аналитикой внешнего трафика — <code class="inline-code pink">true</code>.</div></div>
+              </div>
+            </div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">∨</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row"><div class="schema-field-name">error</div><div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div></div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="examples-section">
           <h2 class="examples-title">Примеры запроса</h2>
           <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
@@ -41,9 +99,23 @@
   "campaigns": [
     "string"
   ],
-  "dateFrom": "string"
+  "dateFrom": "string",
+  "dateTo": "string",
+  "from": "2019-08-24T14:15:22Z",
+  "to": "2019-08-24T14:15:22Z",
+  "groupBy": "NO_GROUP_BY"
 }</pre></div>
           <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-21">{
+  "UUID": "string",
+  "vendor": true
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">⧉</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">⇕ Свернуть всё</span></div>
+          </div>
         </div>
       </div>
     </section>
