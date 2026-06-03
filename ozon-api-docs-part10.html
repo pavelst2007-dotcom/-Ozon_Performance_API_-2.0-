@@ -1,4 +1,4 @@
-<!-- PART 10: Товары в Оплате за клик + METHOD 27 + METHOD 28 + METHOD 29 -->
+<!-- PART 10: Товары в Оплате за клик + METHOD 27 + METHOD 28 + METHOD 29 + METHOD 30 -->
 
     <!-- ===== СЕКЦИЯ: ТОВАРЫ В ОПЛАТЕ ЗА КЛИК ===== -->
     <div class="section-group-title">Товары в Оплате за клик</div>
@@ -162,7 +162,6 @@
             <div class="param-name">pageSize</div>
             <div class="param-desc"><div class="param-type">integer &lt;int64&gt;</div><p>Размер страницы.</p></div>
           </div>
-
           <div class="responses-section">
             <h2 class="responses-title">Ответы</h2>
             <div class="response-accordion open">
@@ -206,16 +205,29 @@
                     <div class="schema-field-desc">
                       <span class="schema-type">string &lt;uint64&gt;</span>
                       <span class="param-default">Default: <code class="inline-code blue">"Топ-20"</code></span>
-                      <!-- Продолжение описания будет добавлено в следующем скрине -->
+                      <div class="info-hint">Только для стратегии «Вывод в топ».</div>
+                      Диапазон позиций в поиске:
+                      <ul class="param-list">
+                        <li><code class="inline-code pink">Топ-4</code>,</li>
+                        <li><code class="inline-code pink">Топ-12</code>,</li>
+                        <li><code class="inline-code pink">Топ-20</code>,</li>
+                        <li><code class="inline-code pink">Топ-30</code>.</li>
+                      </ul>
                     </div>
                   </div>
                   <div class="schema-array-label">]</div>
                 </div>
               </div>
             </div>
-            <div class="response-accordion">
-              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&rsaquo;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
-              <div class="response-accordion-body" style="display:none;"></div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&or;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
+              <div class="response-accordion-body">
+                <div class="section-label">RESPONSE SCHEMA: <span class="schema-badge">application/json</span></div>
+                <div class="param-row">
+                  <div class="param-name">error</div>
+                  <div class="param-desc"><div class="param-type">string</div><p>Описание ошибки.</p></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -237,6 +249,30 @@
 }</pre></div>
             <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 30: УДАЛИТЬ ТОВАРЫ ИЗ КАМПАНИИ ===== -->
+    <section id="campaign-products-delete" class="method-section">
+      <h1 class="page-title">Удалить товары из кампании</h1>
+      <div class="method-line">
+        <span class="method-badge post large">POST</span>
+        <code class="endpoint-url">/api/client/campaign/{campaignId}/products/delete</code>
+        <button class="btn-copy" title="Копировать">&#10825;</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <div class="section-label">PATH PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">campaignId <span class="param-required">required</span></div>
+            <div class="param-desc"><div class="param-type">string &lt;uint64&gt;</div><p>Идентификатор кампании.</p></div>
+          </div>
+          <!-- Остальные параметры будут добавлены в следующем скрине -->
+        </div>
+        <div class="examples-section">
+          <!-- Примеры будут добавлены в следующем скрине -->
         </div>
       </div>
     </section>
