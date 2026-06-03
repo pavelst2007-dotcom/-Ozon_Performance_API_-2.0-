@@ -52,7 +52,11 @@
             <div class="schema-field-desc">
               <span class="schema-type">string &lt;uint64&gt;</span><br />
               Ограничение общего бюджета рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.<br />
-              Учитывается только для автоматических кампаний брендов и агентств. В других случаях параметр игнорируется.
+              Учитывается только для автоматических кампаний брендов и агентств. В других организациях установить новое ограничение общего бюджета не получится. Если у кампании уже установлен бюджет, можно:
+              <ul class="param-list">
+                <li>Убрать ограничения: передайте <code class="inline-code pink">0</code> в этом параметре.</li>
+                <li>Не менять бюджет кампании. Когда он будет исчерпан, уберите ограничения бюджета или создайте новую кампанию с неограниченным бюджетом.</li>
+              </ul>
             </div>
           </div>
 
@@ -61,7 +65,8 @@
             <div class="schema-field-desc">
               <span class="schema-type">string &lt;uint64&gt;</span><br />
               <span class="badge-deprecated">Deprecated</span><br />
-              Дневной бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.
+              Ограничение дневного бюджета рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.<br />
+              Если параметр не заполнен, дневной бюджет не ограничен. После создания рекламной кампании изменить бюджет с дневного на недельный и наоборот не получится.
             </div>
           </div>
 
@@ -69,10 +74,28 @@
             <div class="schema-field-name">weeklyBudget</div>
             <div class="schema-field-desc">
               <span class="schema-type">string &lt;uint64&gt;</span><br />
-              Недельный бюджет рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.
+              Ограничение недельного бюджета рекламной кампании. Единица измерения — одна миллионная доля рубля, округляется до копеек. Например, значение <code class="inline-code pink">1&nbsp;000&nbsp;000</code> в параметре равно 1 рублю.<br />
+              Если параметр не заполнен, недельный бюджет не ограничен. После создания рекламной кампании изменить бюджет с недельного на дневной и наоборот не получится.
             </div>
           </div>
 
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Параметры кампании обновлены</span><span class="resp-accordion-arrow">&or;</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">campaignId</div>
+                  <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор кампании.</div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&rsaquo;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
+              <div class="response-accordion-body" style="display:none;"></div>
+            </div>
+          </div>
         </div>
 
         <div class="examples-section">
@@ -93,7 +116,13 @@
           <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
           <h2 class="examples-title">Примеры ответа</h2>
           <div class="response-tabs"><button class="resp-tab active green">200</button><button class="resp-tab red">default</button></div>
-          <!-- Ответы будут добавлены в следующей части -->
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-26">{
+  "campaignId": "string"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
+          </div>
         </div>
       </div>
     </section>
