@@ -1,0 +1,45 @@
+<!-- PART 10: Товары в Оплате за клик + METHOD 27 Добавить товары в кампанию -->
+
+    <!-- ===== СЕКЦИЯ: ТОВАРЫ В ОПЛАТЕ ЗА КЛИК ===== -->
+    <div class="section-group-title">Товары в Оплате за клик</div>
+
+    <!-- ===== METHOD 27: ДОБАВИТЬ ТОВАРЫ В КАМПАНИЮ ===== -->
+    <section id="campaign-products-add" class="method-section">
+      <h1 class="page-title">Добавить товары в кампанию</h1>
+      <div class="method-line">
+        <span class="method-badge post large">POST</span>
+        <code class="endpoint-url">/api/client/campaign/{campaignId}/products</code>
+        <button class="btn-copy" title="Копировать">&#10825;</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <p class="method-description">В кампанию можно добавить не более 500 товаров.</p>
+
+          <div class="info-block">
+            <p class="info-block-title">Рекомендации по заполнению параметров для разных кампаний</p>
+            <ul class="param-list">
+              <li>Для добавления в кампанию товаров передайте значения параметров <code class="inline-code pink">sku</code> и <code class="inline-code pink">bid</code>. Если параметр <code class="inline-code pink">bid</code> не указан, автоматически задаётся конкурентная ставка.</li>
+              <li>Параметр <code class="inline-code pink">bid</code> учитывается только для кампании с включённой стратегией «Средняя стоимость клика».</li>
+              <li>Для кампании с включённой стратегией можно добавлять товары только из категории</li>
+            </ul>
+          </div>
+
+          <!-- Продолжение будет добавлено в следующих частях -->
+        </div>
+
+        <div class="examples-section">
+          <h2 class="examples-title">Примеры запроса</h2>
+          <div class="resp-meta-tabs"><button class="resp-meta-tab active">Payload</button><button class="resp-meta-tab">JSON</button></div>
+          <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+          <div class="code-block request-block"><pre id="request-json-27">{
+  "bids": [
+    {
+      <!-- Продолжение будет добавлено в следующем скрине -->
+    }
+  ]
+}</pre></div>
+          <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
+        </div>
+      </div>
+    </section>

@@ -91,9 +91,15 @@
                 </div>
               </div>
             </div>
-            <div class="response-accordion">
-              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&rsaquo;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
-              <div class="response-accordion-body" style="display:none;"></div>
+            <div class="response-accordion open">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&or;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
+              <div class="response-accordion-body">
+                <div class="resp-schema-line"><span class="resp-schema-label">RESPONSE SCHEMA:</span><span class="resp-schema-value">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">error</div>
+                  <div class="schema-field-desc"><span class="schema-type">string</span><br />Описание ошибки.</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
