@@ -21,11 +21,37 @@
             <ul class="param-list">
               <li>Для добавления в кампанию товаров передайте значения параметров <code class="inline-code pink">sku</code> и <code class="inline-code pink">bid</code>. Если параметр <code class="inline-code pink">bid</code> не указан, автоматически задаётся конкурентная ставка.</li>
               <li>Параметр <code class="inline-code pink">bid</code> учитывается только для кампании с включённой стратегией «Средняя стоимость клика».</li>
-              <li>Для кампании с включённой стратегией можно добавлять товары только из категории</li>
+              <li>Для кампании с включённой стратегией можно добавлять товары только из категории <code class="inline-code pink">autopilot.categoryId</code>.</li>
             </ul>
           </div>
 
-          <!-- Продолжение будет добавлено в следующих частях -->
+          <div class="section-label">PATH PARAMETERS</div>
+          <div class="param-row">
+            <div class="param-name">campaignId <span class="param-required">required</span></div>
+            <div class="param-desc"><div class="param-type">string &lt;uint64&gt;</div><p>Идентификатор кампании.</p></div>
+          </div>
+
+          <div class="section-label">REQUEST BODY SCHEMA: <span class="schema-badge">application/json</span></div>
+
+          <div class="schema-row">
+            <div class="schema-field-name">bids <span class="param-arrow">&rsaquo;</span></div>
+            <div class="schema-field-desc">
+              <span class="schema-type">Array of objects (extcampaignAddProductsRequestProduct)</span><br />
+              Ставки за клики.
+            </div>
+          </div>
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Товары добавлены в кампанию</span><span class="resp-accordion-arrow">&or;</span></div>
+              <div class="response-accordion-body"></div>
+            </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&rsaquo;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
+              <div class="response-accordion-body" style="display:none;"></div>
+            </div>
+          </div>
         </div>
 
         <div class="examples-section">
@@ -35,11 +61,42 @@
           <div class="code-block request-block"><pre id="request-json-27">{
   "bids": [
     {
-      <!-- Продолжение будет добавлено в следующем скрине -->
+      "sku": "string",
+      "bid": "string",
+      "targetCir": 15,
+      "topPosition": "Топ-20"
     }
   ]
 }</pre></div>
           <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
+          <h2 class="examples-title">Примеры ответа</h2>
+          <div class="response-tabs"><button class="resp-tab active red">default</button></div>
+          <div class="response-block">
+            <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
+            <div class="code-block response-code"><pre id="response-json-27">{
+  "error": "text"
+}</pre></div>
+            <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== METHOD 28: ОБНОВИТЬ СТАВКИ ТОВАРОВ ===== -->
+    <section id="campaign-products-update" class="method-section">
+      <h1 class="page-title">Обновить ставки товаров</h1>
+      <div class="method-line">
+        <span class="method-badge put large">PUT</span>
+        <code class="endpoint-url">/api/client/campaign/{campaignId}/products</code>
+        <button class="btn-copy" title="Копировать">&#10825;</button>
+      </div>
+      <div class="tabs"><button class="tab active">Описание и примеры</button><button class="tab">Консоль</button></div>
+      <div class="tab-content">
+        <div class="params-section">
+          <!-- Продолжение будет добавлено в следующем скрине -->
+        </div>
+        <div class="examples-section">
+          <!-- Примеры будут добавлены в следующем скрине -->
         </div>
       </div>
     </section>
