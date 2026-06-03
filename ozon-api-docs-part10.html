@@ -160,9 +160,64 @@
           </div>
           <div class="param-row">
             <div class="param-name">pageSize</div>
-            <div class="param-desc"><div class="param-type">integer &lt;int64&gt;</div><!-- Описание будет добавлено в следующем скрине --></div>
+            <div class="param-desc"><div class="param-type">integer &lt;int64&gt;</div><p>Размер страницы.</p></div>
           </div>
-          <!-- Остальные параметры будут добавлены в следующем скрине -->
+
+          <div class="responses-section">
+            <h2 class="responses-title">Ответы</h2>
+            <div class="response-accordion open">
+              <div class="response-accordion-header" onclick="toggleAccordion(this)"><span class="resp-code-badge green">200</span><span class="resp-accordion-label">Список товаров кампании</span><span class="resp-accordion-arrow">&or;</span></div>
+              <div class="response-accordion-body">
+                <div class="section-label">RESPONSE SCHEMA: <span class="schema-badge">application/json</span></div>
+                <div class="schema-row">
+                  <div class="schema-field-name">products <span class="param-arrow">&rsaquo;</span></div>
+                  <div class="schema-field-desc"><span class="schema-type">Array of objects (extcampaignGetProductsResponseV2Product)</span><br />Список товаров кампании.</div>
+                </div>
+                <div class="schema-array-block">
+                  <div class="schema-array-label">Array () [</div>
+                  <div class="schema-row indent">
+                    <div class="schema-field-name">sku</div>
+                    <div class="schema-field-desc"><span class="schema-type">string &lt;uint64&gt;</span><br />Идентификатор товара: Ozon ID или SKU.</div>
+                  </div>
+                  <div class="schema-row indent">
+                    <div class="schema-field-name">bid</div>
+                    <div class="schema-field-desc">
+                      <span class="schema-type">string &lt;uint64&gt;</span>
+                      <div class="info-hint">Только для стратегии «Средняя стоимость клика».</div>
+                      Ставка за один клик — CPC.
+                    </div>
+                  </div>
+                  <div class="schema-row indent">
+                    <div class="schema-field-name">targetCir</div>
+                    <div class="schema-field-desc">
+                      <span class="schema-type">number &lt;double&gt;</span>
+                      <span class="param-range">[ 10 .. 100 ]</span>
+                      <span class="param-default">Default: <code class="inline-code blue">15</code></span>
+                      <div class="info-hint">Только для стратегии «Целевой расход».</div>
+                      Целевая доля рекламных расходов в процентах.
+                    </div>
+                  </div>
+                  <div class="schema-row indent">
+                    <div class="schema-field-name">title</div>
+                    <div class="schema-field-desc"><span class="schema-type">string</span><br />Название товара.</div>
+                  </div>
+                  <div class="schema-row indent">
+                    <div class="schema-field-name">topPosition</div>
+                    <div class="schema-field-desc">
+                      <span class="schema-type">string &lt;uint64&gt;</span>
+                      <span class="param-default">Default: <code class="inline-code blue">"Топ-20"</code></span>
+                      <!-- Продолжение описания будет добавлено в следующем скрине -->
+                    </div>
+                  </div>
+                  <div class="schema-array-label">]</div>
+                </div>
+              </div>
+            </div>
+            <div class="response-accordion">
+              <div class="response-accordion-header response-accordion-header--error" onclick="toggleAccordion(this)"><span class="resp-accordion-arrow">&rsaquo;</span><span class="resp-code-badge gray">default</span><span class="resp-accordion-label">Ошибка запроса</span></div>
+              <div class="response-accordion-body" style="display:none;"></div>
+            </div>
+          </div>
         </div>
         <div class="examples-section">
           <h2 class="examples-title">Примеры ответа</h2>
@@ -171,9 +226,16 @@
             <div class="resp-meta"><span class="resp-label">Content type</span><div class="resp-value">application/json</div></div>
             <div class="code-block response-code"><pre id="response-json-29">{
   "products": [
-    {<!-- Продолжение будет добавлено в следующем скрине -->}
+    {
+      "sku": "string",
+      "bid": "string",
+      "targetCir": 15,
+      "title": "string",
+      "topPosition": "Топ-20"
+    }
   ]
 }</pre></div>
+            <div class="copy-link"><span class="copy-icon">&#10825;</span><a href="#" class="link-blue">Копировать</a><span class="collapse-link">&#8661; Свернуть все</span></div>
           </div>
         </div>
       </div>
